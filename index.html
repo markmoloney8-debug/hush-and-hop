@@ -1092,12 +1092,19 @@ img.branch.painted{left:-6%;top:57%;width:112%;height:auto;transform:translateY(
 .pitem{position:absolute;translate:-50% 0;z-index:6;touch-action:none;animation:bob 3s ease-in-out infinite}
 .pitem svg{width:100%;height:100%;display:block;pointer-events:none;filter:drop-shadow(0 4px 6px rgba(0,0,0,.4))}
 .pitem.sel{filter:drop-shadow(0 0 10px #ffe27a)}
-.drocket{position:absolute;left:4%;top:24%;width:clamp(130px,34vmin,240px);z-index:5;animation:bob 2.4s ease-in-out infinite}
+.drocket{position:absolute;left:0;top:0;width:clamp(110px,24vmin,170px);z-index:5;pointer-events:none;transform-origin:50% 50%}
+.drocket .rin{animation:bob 2.4s ease-in-out infinite}
+.drocket.landed .rin{animation:none}
+.drocket.boost .rflame{transform:scaleX(1.5)}
+.drocket.landed .rflame{opacity:0;transition:opacity .4s}
+.rpad{position:absolute;inset:0;z-index:2;touch-action:none}
+.rpuff{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:radial-gradient(circle,#fff6c2,rgba(255,160,70,.6) 60%,rgba(255,160,70,0));z-index:4;pointer-events:none;animation:rpuff .7s ease-out forwards}
+@keyframes rpuff{to{transform:scale(2.4);opacity:0}}
 .drocket svg{width:100%;display:block}
 .rflame{transform-box:fill-box;transform-origin:100% 50%;animation:rflame .12s linear infinite alternate}
 .scene.warp .rflame{animation-duration:.06s;transform:scaleX(1.6)}
 @keyframes rflame{to{transform:scaleX(.75)}}
-.dplanet{position:absolute;z-index:3}
+.dplanet{position:absolute;z-index:3;padding:0;border-radius:50%}
 .dplanet svg{width:100%;height:100%;display:block;filter:drop-shadow(0 0 20px rgba(255,255,255,.18))}
 .dplanet.happy svg{animation:pbump .7s ease-out}
 .cargo{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);display:flex;justify-content:center;gap:clamp(12px,4vw,28px);z-index:6}
@@ -1107,6 +1114,46 @@ img.branch.painted{left:-6%;top:57%;width:112%;height:auto;transform:translateY(
 .eflower{position:absolute;width:40px;translate:-50% -100%;z-index:4;transform-origin:50% 100%;animation:flowerup 1.2s cubic-bezier(.3,1.6,.5,1)}
 .eflower svg{width:100%;display:block}
 @keyframes flowerup{from{transform:scale(0)}to{transform:scale(1)}}
+
+/* Menu pictures move gently */
+.tile-art .ti{display:flex;align-items:center;justify-content:center;width:100%;height:100%;animation-duration:2.6s;animation-timing-function:ease-in-out;animation-iteration-count:infinite;transform-origin:50% 80%}
+.tile-art[data-m="bob"] .ti{animation-name:tiBob}
+.tile-art[data-m="float"] .ti{animation-name:tiFloat;animation-duration:3.4s}
+.tile-art[data-m="hop"] .ti{animation-name:tiHop;animation-duration:1.6s}
+.tile-art[data-m="rock"] .ti{animation-name:tiRock;animation-duration:3.2s}
+.tile-art[data-m="sway"] .ti{animation-name:tiSway;animation-duration:3s}
+.tile-art[data-m="tilt"] .ti{animation-name:tiTilt;animation-duration:2.4s}
+.tile-art[data-m="wiggle"] .ti{animation-name:tiWiggle;animation-duration:1.8s}
+.tile-art[data-m="pulse"] .ti{animation-name:tiPulse;animation-duration:2s;transform-origin:50% 50%}
+.tile-art[data-m="trot"] .ti{animation-name:tiTrot;animation-duration:.9s}
+.tile-art[data-m="flutter"] .ti{animation-name:tiFlutter;animation-duration:3s}
+.tile-art[data-m="flutter"] img{animation:tiWings .35s ease-in-out infinite alternate!important}
+.tile-art[data-m="crawl"] .ti{animation-name:tiCrawl;animation-duration:3s}
+.tile-art[data-m="swim"] .ti{animation-name:tiSwim;animation-duration:3.2s}
+.tile-art[data-m="roll"] .ti{animation-name:tiRoll;animation-duration:2.6s;transform-origin:50% 50%}
+.tile-art[data-m="spinslow"] .ti{animation-name:tiSpin;animation-duration:5s;transform-origin:50% 50%}
+.tile-art[data-m="zoom"] .ti{animation-name:tiZoom;animation-duration:2.4s}
+.tile-art[data-m="none"] .ti{animation:none}
+@keyframes tiBob{50%{transform:translateY(-7px)}}
+@keyframes tiFloat{0%,100%{transform:translateY(4px) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
+@keyframes tiHop{0%,60%,100%{transform:translateY(0) scale(1,1)}10%{transform:translateY(2px) scale(1.06,.92)}30%{transform:translateY(-16px) scale(.96,1.05)}50%{transform:translateY(0) scale(1.04,.95)}}
+@keyframes tiRock{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes tiSway{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+@keyframes tiTilt{0%,70%,100%{transform:rotate(0)}80%{transform:rotate(-10deg)}90%{transform:rotate(6deg)}}
+@keyframes tiWiggle{0%,60%,100%{transform:rotate(0)}70%{transform:rotate(-8deg)}80%{transform:rotate(8deg)}90%{transform:rotate(-4deg)}}
+@keyframes tiPulse{50%{transform:scale(1.08)}}
+@keyframes tiTrot{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-6px) rotate(-2deg)}50%{transform:translateY(0) rotate(0)}75%{transform:translateY(-4px) rotate(2deg)}}
+@keyframes tiFlutter{0%,100%{transform:translate(-6px,4px) rotate(-6deg)}50%{transform:translate(6px,-8px) rotate(6deg)}}
+@keyframes tiWings{from{transform:scaleX(1)}to{transform:scaleX(.6)}}
+@keyframes tiCrawl{0%,100%{transform:translateX(-10px) rotate(-4deg)}50%{transform:translateX(10px) rotate(4deg)}}
+@keyframes tiSwim{0%,100%{transform:translateX(-12px) rotate(3deg)}50%{transform:translateX(12px) rotate(-3deg)}}
+@keyframes tiRoll{0%,100%{transform:translateX(-14px) rotate(-90deg)}50%{transform:translateX(14px) rotate(90deg)}}
+@keyframes tiSpin{0%,100%{transform:rotate(-12deg) translateY(2px)}50%{transform:rotate(12deg) translateY(-6px)}}
+@keyframes tiZoom{0%,100%{transform:translate(-8px,6px) rotate(-8deg)}50%{transform:translate(8px,-8px) rotate(-14deg)}}
+.tile-art .fwl,.tile-art .fwr{transform-box:view-box;animation:fflap .5s ease-in-out infinite alternate}
+.tile-art .fwl{transform-origin:58px 72px}.tile-art .fwr{transform-origin:62px 72px}
+.tile-art .nwing{transform-box:fill-box;transform-origin:50% 100%;animation:nflap .3s ease-in-out infinite alternate}
+@media (prefers-reduced-motion: reduce){.tile-art .ti,.tile-art .fwl,.tile-art .fwr,.tile-art .nwing,.tile-art img{animation:none!important}}
 </style>
 
 <!-- HOME -->
@@ -1513,6 +1560,10 @@ const MOVE_ICONS = {
 };
 
 /* Menu tile pictures */
+/* how each menu picture moves, so the menu feels alive */
+const TILE_MOTION = {bedtime:'rock', sheep:'hop', lantern:'float', window:'sway', bath:'float', caterpillar:'none', unicorn:'trot', bhouse:'flutter', rainbow:'pulse',
+  cake:'wiggle', bugs:'crawl', kitty:'tilt', horse:'trot', fairy:'float', song:'float', paint:'wiggle', planets:'spinslow', rocket:'zoom', shark:'swim', ellie:'sway',
+  baby:'rock', freeze:'hop', traffic:'pulse', copycat:'tilt', count:'hop', jungle:'sway', beach:'bob', sea:'swim', helpers:'wiggle', football:'roll'};
 const ICONS = {
   planets: () => planetSVG(PLANETS[5], true),
   rocket: () => ROCKET_SVG,
@@ -4220,35 +4271,78 @@ const STOPS = [
   {body:PLANETS[5], item:'ice', hello:'Here is Saturn! What do Saturn\'s rings need?', yes:'Ice! Saturn\'s rings are made of ice and rock.', hint:'Saturn\'s rings are made of ice.'},
   {body:PLANETS[2], item:'soil', hello:'Back home to Earth! What shall we drop on Earth?', yes:'Soil! Now a flower can grow on Earth, our home.', hint:'Plants grow in soil on Earth.'}
 ];
-GAMES.push({ id:'rocket', side:'hush', name:'Space Delivery', tag:'Drop the right thing on each planet', icon:'rocket', tone:'moon',
+GAMES.push({ id:'rocket', side:'hush', name:'Space Delivery', tag:'Fly, land and deliver to the planets', icon:'rocket', tone:'moon',
   async play(sc, ctx){
     sc.className = 'scene bg-space';
-    sc.innerHTML = SPACE_BG(90) + `<div class="streaks"></div><div class="drocket">${ROCKET_SVG}</div><div class="cargo"></div>`;
-    const rocket = sc.querySelector('.drocket'), cargo = sc.querySelector('.cargo'), bar = meter(sc);
-    const W = sc.clientWidth, H = sc.clientHeight, size = Math.min(W*.55, H*.42);
-    const travel = async ms => { sc.classList.add('warp'); flySound(); await ctx.wait(ms); sc.classList.remove('warp'); };
-    cap('Blast off!', false); say('Blast off! Let\'s deliver things to the planets.'); noise(now(), 1.4, .1, 600);
-    await travel(1800);
-    for(let k = 0; k < STOPS.length; k++){
-      const st = STOPS[k], p = el('div','dplanet', planetSVG(st.body, true)); const w = size*(st.body.id === 'jupiter' ? 1.15 : st.body.id === 'saturn' ? 1.1 : .9);
-      Object.assign(p.style, {width: w + 'px', height: w/1.4 + 'px', left: (W*.66 - w/2) + 'px', top: (H*.5 - w/2.8) + 'px'}); sc.appendChild(p);
-      await p.animate([{transform:`translateX(${W*.6}px)`},{transform:'none'}],{duration:1400, easing:'ease-out'}).finished.catch(() => {});
+    sc.innerHTML = SPACE_BG(90) + `<div class="rpad"></div><div class="drocket fly"><div class="rin">${ROCKET_SVG}</div></div><div class="cargo"></div>`;
+    const rocket = sc.querySelector('.drocket'), pad = sc.querySelector('.rpad'), cargo = sc.querySelector('.cargo'), bar = meter(sc);
+    const W = sc.clientWidth, H = sc.clientHeight, size = Math.min(W*.5, H*.36), rw = rocket.offsetWidth, rh = rw*80/140;
+    let x = W*.2, y = H*.42, tx = x, ty = y, ang = 0, phase = 'wait', raf = 0, planet = null, onLand = null, lastPuff = 0;
+    const yMin = 120, yMax = H - 40 - Math.min(Math.max(76, Math.min(W, H)*.2), 120) - 30;
+    const clampT = () => { tx = Math.max(rw*.4, Math.min(W - rw*.4, tx)); ty = Math.max(yMin, Math.min(yMax, ty)); };
+    const draw = () => { rocket.style.transform = `translate(${x - rw/2}px,${y - rh/2}px) rotate(${ang}deg)`; };
+    const pc = () => { const r = planet.getBoundingClientRect(), o = sc.getBoundingClientRect(); return {cx: r.left - o.left + r.width/2, cy: r.top - o.top + r.height/2, r: r.width*40/140}; };
+    /* steer: the rocket follows your finger; tapping a planet sends it there by itself */
+    let down = false;
+    const aim = e => { const o = sc.getBoundingClientRect(); tx = e.clientX - o.left; ty = e.clientY - o.top; clampT(); };
+    pad.addEventListener('pointerdown', e => { down = true; try{ pad.setPointerCapture(e.pointerId); }catch(_){} aim(e); });
+    pad.addEventListener('pointermove', e => { if(down) aim(e); });
+    ['pointerup','pointercancel'].forEach(n => pad.addEventListener(n, () => { down = false; }));
+    let prev = performance.now();
+    const loop = t => {
       if(!ctx.alive()) return;
-      cap(st.hello, false); say(st.hello);
+      const dt = Math.min(50, t - prev); prev = t;
+      if(phase === 'fly'){
+        const k = 1 - Math.pow(.993, dt), vx = (tx - x)*k, vy = (ty - y)*k; x += vx; y += vy;
+        const sp = Math.hypot(vx, vy), want = sp > .4 ? Math.atan2(vy, vx)*180/Math.PI : 0;
+        let d = ((want - ang + 540) % 360) - 180; ang += d*Math.min(1, dt/120);
+        rocket.classList.toggle('boost', sp > .8);
+        if(sp > .8 && t - lastPuff > 70){ lastPuff = t; const p = el('i','rpuff'); const a = ang*Math.PI/180; p.style.left = (x - Math.cos(a)*rw*.48)+'px'; p.style.top = (y - Math.sin(a)*rw*.48)+'px'; sc.appendChild(p); setTimeout(() => p.remove(), 700); }
+        draw();
+        if(planet && onLand){ const P = pc(); if(Math.hypot(x - P.cx, y - P.cy) < P.r + rw*.32){ const f = onLand; onLand = null; f(); } }
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    draw(); raf = requestAnimationFrame(loop); ctx.onExit(() => cancelAnimationFrame(raf));
+    const travel = async ms => { sc.classList.add('warp'); flySound(); await ctx.wait(ms); sc.classList.remove('warp'); };
+    cap('Blast off!', false); say('Blast off! Fly the rocket to each planet and deliver the right thing.'); noise(now(), 1.4, .1, 600);
+    await travel(1600);
+    for(let k = 0; k < STOPS.length; k++){
+      const st = STOPS[k], w = size*(st.body.id === 'jupiter' ? 1.2 : st.body.id === 'saturn' ? 1.15 : .95);
+      planet = el('button','dplanet', planetSVG(st.body, true)); planet.setAttribute('aria-label', `Fly to ${st.body.name}`);
+      const py = (W > H ? rnd(.5, .62) : rnd(.4, .58))*H;
+      Object.assign(planet.style, {width: w + 'px', height: w/1.4 + 'px', left: (W*.7 - w/2) + 'px', top: (py - w/2.8) + 'px'}); sc.appendChild(planet);
+      await planet.animate([{transform:`translateX(${W*.6}px)`},{transform:'none'}],{duration:1300, easing:'ease-out'}).finished.catch(() => {});
+      if(!ctx.alive()) return;
+      /* 1. fly there and land */
+      phase = 'fly'; tx = x; ty = y;
+      const flyLine = `Fly the rocket to ${st.body.id === 'moon' ? 'the Moon' : st.body.name}!`;
+      cap(flyLine, false); say(flyLine + ' Move your finger and the rocket will follow.');
+      planet.addEventListener('click', () => { if(phase !== 'fly') return; const P = pc(); tx = P.cx; ty = P.cy; });
+      showHow(sc, ctx, 'drag', () => phase === 'fly' ? [x, y] : null, () => { const P = pc(); return [P.cx, P.cy - P.r*.5]; }, {idle:5000, wait:2500});
+      await new Promise(res => { onLand = res; });
+      if(!ctx.alive()) return;
+      ctx._how && ctx._how.end(); phase = 'landed'; rocket.classList.remove('boost');
+      const P = pc(), lx = P.cx - P.r*.15, ly = P.cy - P.r - rw*.42;
+      thump(); noise(now(), .5, .08, 500);
+      await rocket.animate([{transform: rocket.style.transform},{transform:`translate(${lx - rw/2}px,${ly - rh/2}px) rotate(-90deg)`}],{duration:900, easing:'ease-in-out', fill:'forwards'}).finished.catch(() => {});
+      x = lx; y = ly; ang = -90; draw(); rocket.getAnimations().forEach(a => a.cancel()); rocket.classList.add('landed');
+      if(!ctx.alive()) return;
+      /* 2. choose what to drop */
+      cap(st.hello, false); say('You landed! ' + st.hello);
       const choices = [st.item, ...Object.keys(CARGO).filter(c => c !== st.item).sort(() => Math.random() - .5).slice(0, 2)].sort(() => Math.random() - .5);
       cargo.innerHTML = '';
       await new Promise(next => {
         let done = false;
         const deliver = async (b, dx = 0, dy = 0) => {
           done = true; b.dataset.eaten = 1; ctx._how && ctx._how.end();
-          const r = p.getBoundingClientRect();
-          await flyTo(b, r.left + r.width/2, r.top + r.height*.3, {dx, dy, scale:.5, ms:800});
+          const r = planet.getBoundingClientRect(), o = sc.getBoundingClientRect(), Q = pc();
+          await flyTo(b, o.left + Q.cx + Q.r*.45, o.top + Q.cy - Q.r*.55, {dx, dy, scale:.45, ms:800});
           if(!ctx.alive()) return;
-          b.style.opacity = 0; p.classList.remove('happy'); void p.offsetWidth; p.classList.add('happy');
-          const o = sc.getBoundingClientRect();
-          for(let i=0;i<10;i++){ const sp = el('i','spark'); sp.style.left = (r.left - o.left + r.width*rnd(.3,.7))+'px'; sp.style.top = (r.top - o.top + r.height*rnd(.1,.6))+'px'; sp.style.setProperty('--c', pick(['#fff6c2','#9fd3f2','#f6a5c8'])); sc.appendChild(sp); setTimeout(() => sp.remove(), 1600); }
+          b.style.opacity = 0; planet.classList.remove('happy'); void planet.offsetWidth; planet.classList.add('happy');
+          for(let i=0;i<10;i++){ const sp = el('i','spark'); sp.style.left = (Q.cx + rnd(-Q.r, Q.r)*.7)+'px'; sp.style.top = (Q.cy + rnd(-Q.r, Q.r)*.7)+'px'; sp.style.setProperty('--c', pick(['#fff6c2','#9fd3f2','#f6a5c8'])); sc.appendChild(sp); setTimeout(() => sp.remove(), 1600); }
           if(st.item === 'soil'){ const fl = el('div','eflower', `<svg viewBox="0 0 40 60"><path d="M20 58 V26" stroke="#4f9a54" stroke-width="4"/><path d="M20 44 Q8 36 6 44 Q14 50 20 46Z" fill="#6fbf5a"/><g fill="#f58ab8"><circle cx="20" cy="12" r="7"/><circle cx="10" cy="20" r="7"/><circle cx="30" cy="20" r="7"/><circle cx="14" cy="30" r="7"/><circle cx="26" cy="30" r="7"/></g><circle cx="20" cy="22" r="6" fill="#ffd23f"/></svg>`);
-            Object.assign(fl.style, {left: (r.left - o.left + r.width/2) + 'px', top: (r.top - o.top + r.height*.08) + 'px'}); sc.appendChild(fl); }
+            Object.assign(fl.style, {left: (Q.cx + Q.r*.45) + 'px', top: (Q.cy - Q.r*.78) + 'px'}); sc.appendChild(fl); }
           sparkleSound(k + 2); cap(st.yes, false); say(st.yes); bar((k + 1)/STOPS.length);
           await ctx.wait(4200); next();
         };
@@ -4256,14 +4350,22 @@ GAMES.push({ id:'rocket', side:'hush', name:'Space Delivery', tag:'Drop the righ
           const b = el('button','citem', CARGO[c]); b.setAttribute('aria-label', c); cargo.appendChild(b);
           const nope = () => { tone(220, now(), .25, 'triangle', .05); b.classList.remove('nope'); void b.offsetWidth; b.classList.add('nope'); say('Not that one. ' + st.hint); };
           b.addEventListener('click', () => { if(b._dragged || done || !ctx.alive()) return; c === st.item ? deliver(b) : nope(); });
-          draggable(b, { hit: (x, y) => { const r = p.getBoundingClientRect(); return x > r.left - 30 && x < r.right + 30 && y > r.top - 30 && y < r.bottom + 30; },
+          draggable(b, { hit: (hx, hy) => { const r = planet.getBoundingClientRect(); return hx > r.left - 30 && hx < r.right + 30 && hy > r.top - 30 && hy < r.bottom + 30; },
             drop: (dx, dy) => { if(done) return false; if(c !== st.item){ nope(); return false; } deliver(b, dx, dy); return true; } });
         });
-        showHow(sc, ctx, 'drag', () => done ? null : [...cargo.children].find(b => b.getAttribute('aria-label') === st.item), () => p, {idle:7000, wait:4000});
+        showHow(sc, ctx, 'drag', () => done ? null : [...cargo.children].find(b => b.getAttribute('aria-label') === st.item), () => planet, {idle:7000, wait:4000});
       });
       if(!ctx.alive()) return;
       cargo.innerHTML = '';
-      if(k < STOPS.length - 1){ p.animate([{transform:'none'},{transform:`translateX(${-W*1.1}px)`}],{duration:1600, easing:'ease-in', fill:'forwards'}); await travel(1700); p.remove(); }
+      if(k < STOPS.length - 1){
+        /* 3. take off again */
+        rocket.classList.remove('landed'); flySound();
+        const ux = W*.22, uy = H*.4;
+        await rocket.animate([{transform: rocket.style.transform},{transform:`translate(${x - rw/2}px,${y - rh/2 - H*.12}px) rotate(-90deg)`, offset:.4},{transform:`translate(${ux - rw/2}px,${uy - rh/2}px) rotate(0deg)`}],{duration:1500, easing:'ease-in-out', fill:'forwards'}).finished.catch(() => {});
+        x = ux; y = uy; ang = 0; tx = x; ty = y; draw(); rocket.getAnimations().forEach(a => a.cancel());
+        const old = planet; old.animate([{transform:'none'},{transform:`translateX(${-W*1.2}px)`}],{duration:1500, easing:'ease-in', fill:'forwards'});
+        phase = 'wait'; await travel(1600); old.remove();
+      }
     }
     cheer(); cap('Space mission complete!'); await ctx.wait(3500); finish(ctx, 'Mission complete!');
   }
@@ -4980,7 +5082,7 @@ function openMenu(side){
   $('#menu-title').textContent = SIDES[side].title; $('#menu-sub').textContent = SIDES[side].sub;
   const tiles = $('#tiles'); tiles.innerHTML = '';
   GAMES.filter(g => g.side === side).forEach(g => {
-    const t = el('button','tile', `<span class="tile-art">${ICONS[g.icon]()}</span><span class="tile-name">${g.name}<span class="tile-tag">${g.tag}</span></span>`);
+    const t = el('button','tile', `<span class="tile-art" data-m="${TILE_MOTION[g.icon] || 'bob'}"><span class="ti" style="animation-delay:${(-(GAMES.indexOf(g) % 7)*.43).toFixed(2)}s">${ICONS[g.icon]()}</span></span><span class="tile-name">${g.name}<span class="tile-tag">${g.tag}</span></span>`);
     t.id = 'tile-'+g.id;
     t.addEventListener('click', () => { audio(); runGame(g); });
     tiles.appendChild(t);
