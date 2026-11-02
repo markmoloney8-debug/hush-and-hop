@@ -1041,7 +1041,7 @@ img.branch.painted{left:-6%;top:57%;width:112%;height:auto;transform:translateY(
 
 /* Paint by Numbers */
 .bg-paint{background:#fbf3e4}
-.pbpick{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top,0px) + 112px);display:grid;gap:14px;justify-content:center;align-content:start}
+.pbpick{position:absolute;left:0;right:0;bottom:0;top:calc(env(safe-area-inset-top,0px) + 112px);display:grid;gap:14px;justify-content:center;align-content:start;overflow-y:auto;padding-bottom:24px;-webkit-overflow-scrolling:touch}
 .pbpick button{aspect-ratio:1;border-radius:20px;background:#fff;padding:6px;box-shadow:0 4px 0 rgba(42,40,64,.12),0 8px 18px rgba(42,40,64,.1);transition:transform .2s}
 .pbpick button:active{transform:scale(.96)}
 .pbpick svg,.pbpic svg{width:100%;height:100%;display:block;border-radius:14px}
@@ -1154,6 +1154,147 @@ img.branch.painted{left:-6%;top:57%;width:112%;height:auto;transform:translateY(
 .tile-art .fwl{transform-origin:58px 72px}.tile-art .fwr{transform-origin:62px 72px}
 .tile-art .nwing{transform-box:fill-box;transform-origin:50% 100%;animation:nflap .3s ease-in-out infinite alternate}
 @media (prefers-reduced-motion: reduce){.tile-art .ti,.tile-art .fwl,.tile-art .fwr,.tile-art .nwing,.tile-art img{animation:none!important}}
+
+/* Star Blaster */
+.ipad{position:absolute;inset:0;z-index:2;touch-action:none}
+.iship{position:absolute;left:0;top:0;width:clamp(76px,20vmin,120px);z-index:5;pointer-events:none}
+.iship svg{width:100%;display:block;filter:drop-shadow(0 0 10px rgba(120,190,255,.5))}
+.alien{position:absolute;left:0;top:0;z-index:4;pointer-events:none}
+.alien svg{width:100%;display:block;transition:transform .15s}
+.scene.aframe .alien svg{transform:rotate(-5deg)}
+.scene:not(.aframe) .alien svg{transform:rotate(5deg)}
+.alien.popped svg{transform:none!important;animation:apop 1.1s ease-out forwards}
+@keyframes apop{0%{transform:scale(.4) rotate(0)}30%{transform:scale(1.2) rotate(90deg)}100%{transform:translateY(-60px) scale(.6) rotate(220deg);opacity:0}}
+.istar{position:absolute;left:-9px;top:-9px;width:18px;height:18px;z-index:4;pointer-events:none;background:#ffe27a;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);filter:drop-shadow(0 0 6px #ffd23f)}
+.iufo{position:absolute;left:0;top:0;z-index:4;pointer-events:none}
+.iufo svg{width:100%;display:block;filter:drop-shadow(0 0 14px rgba(200,160,255,.7));animation:bob 1.6s ease-in-out infinite}
+.iufo.popped svg{animation:apop 1.4s ease-out forwards}
+
+/* Pig's Farm Day */
+.bg-farm{background:linear-gradient(180deg,#8fd0f5 0%,#cdeefb 45%,#e9f8f0 60%)}
+.fworld{position:absolute;left:0;top:0;height:100%;will-change:transform}
+.fhillwrap{position:absolute;top:38%;height:26%}
+.fhills{width:100%;height:100%;display:block}
+.fground{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,#7cc96b,#5fb35e)}
+.fpath{position:absolute;left:0;right:0;height:44px;background:#d9b27a;border-radius:22px;box-shadow:inset 0 3px 0 rgba(0,0,0,.08)}
+.fpost{position:absolute;width:9px;margin-left:-4px;background:#fff8ee;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.15)}
+.frail{position:absolute;left:0;right:0;height:7px;background:#fff8ee;box-shadow:0 1px 0 rgba(0,0,0,.12)}
+.fstars{position:absolute;left:50%;translate:-50% 0;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);display:flex;gap:5px;z-index:8;pointer-events:none}
+.fstars i{width:26px;height:26px;background:rgba(255,255,255,.65);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);transition:background .4s,transform .4s}
+.fstars i.on{background:#ffd23f;transform:scale(1.2)}
+.fnight{position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,30,90,.75),rgba(255,130,80,.35));opacity:0;transition:opacity 4s;pointer-events:none;z-index:7}
+.scene.dusk .fnight{opacity:1}
+.fpig{position:absolute;z-index:6;pointer-events:none}
+.fpin{transition:transform .2s}
+.fpig svg{width:100%;display:block;filter:drop-shadow(0 4px 2px rgba(0,0,0,.18))}
+.fpig.walking svg{animation:pigbob .28s ease-in-out infinite alternate}
+.fpig.walking .pl1{animation:pleg .28s ease-in-out infinite alternate}
+.fpig.walking .pl2{animation:pleg .28s ease-in-out infinite alternate-reverse}
+.fpig .pleg{transform-box:fill-box;transform-origin:50% 0}
+@keyframes pleg{from{transform:rotate(-14deg)}to{transform:rotate(14deg)}}
+@keyframes pigbob{to{transform:translateY(-4%)}}
+.fpig .pmud{opacity:0;transition:opacity .5s}
+.fpig.muddy .pmud{opacity:1}
+.fpig.rolling svg{animation:pigroll .9s ease-in-out}
+@keyframes pigroll{50%{transform:translateY(-14%) rotate(180deg)}100%{transform:rotate(360deg)}}
+.fpig.munch svg,.fprop.munch img,.fprop.munch svg{animation:hmunch .38s ease-in-out 3}
+.fprop{position:absolute;z-index:4}
+div.fprop{pointer-events:none}
+button.fprop{padding:0;background:none;z-index:5;touch-action:manipulation}
+button.fprop::before{content:"";position:absolute;inset:-14px}
+.fprop svg,.fprop img{width:100%;display:block;pointer-events:none}
+.fprop.pond,.fprop.mud{z-index:3}
+.fprop.barn,.fprop.henhouse{z-index:2}
+.fcow .chead{transform-box:fill-box;transform-origin:80% 40%}
+.fcow.munch .chead{animation:unodp .38s ease-in-out 3}
+.fhen{animation:peck 2.2s ease-in-out infinite;transform-origin:50% 100%}
+.fhen.h2{animation-delay:-1.1s}
+@keyframes peck{0%,60%,100%{transform:rotate(0)}70%,80%{transform:rotate(14deg)}}
+.fduck img{transform:scaleX(1)}
+.fduck{animation:bob 2.2s ease-in-out infinite}
+.fhorse img{transform:scaleX(-1)}
+.fsheep img{transform:scaleX(-1)}
+.fsheep .splat{position:absolute;inset:20% 20% 30% 15%;background:radial-gradient(circle at 30% 40%,#7a5230 0 9%,transparent 10%),radial-gradient(circle at 60% 30%,#7a5230 0 7%,transparent 8%),radial-gradient(circle at 50% 70%,#7a5230 0 8%,transparent 9%);opacity:0;transition:opacity .4s}
+.fsheep.splashed .splat{opacity:1}
+.fsheep.splashed{animation:nope .5s ease-in-out}
+.tree.shake svg{animation:treeshake .5s ease-in-out}
+@keyframes treeshake{20%{transform:rotate(-4deg)}40%{transform:rotate(4deg)}60%{transform:rotate(-3deg)}80%{transform:rotate(2deg)}}
+.tree svg{transform-origin:45% 100%}
+.egg,.apple,.hay,.bread{filter:drop-shadow(0 0 6px rgba(255,240,170,.9))}
+.egg.inbasket{opacity:0;transition:opacity .3s .2s}
+
+/* Police Chase */
+.bg-town{background:#a6d98a}
+.town{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.cpad{position:absolute;inset:0;z-index:2;touch-action:none}
+.copcar{position:absolute;left:0;top:0;width:clamp(44px,10vmin,66px);z-index:6;pointer-events:none}
+.copcar svg{width:100%;display:block;filter:drop-shadow(0 4px 3px rgba(0,0,0,.3))}
+.clights .lr{animation:clr .5s steps(1) infinite}.clights .lb{animation:clb .5s steps(1) infinite}
+@keyframes clr{50%{fill:#7a2a22}}@keyframes clb{0%{fill:#1a3f7a}50%{fill:#2f8fff}}
+.robber{position:absolute;left:0;top:0;z-index:5;padding:0;background:none;touch-action:none}
+.robber::before{content:"";position:absolute;inset:-12px}
+.robber svg{width:100%;display:block;pointer-events:none;animation:rrun .3s ease-in-out infinite alternate}
+.robber .rl1{animation:rleg .3s ease-in-out infinite alternate}.robber .rl2{animation:rleg .3s ease-in-out infinite alternate-reverse}
+.robber .rlegs path{transform-box:fill-box;transform-origin:50% 0}
+@keyframes rleg{from{transform:rotate(-20deg)}to{transform:rotate(20deg)}}
+@keyframes rrun{to{transform:translateY(-4px) rotate(3deg)}}
+.robber.caughtr svg{animation:rcaught .9s ease-in forwards}
+@keyframes rcaught{30%{transform:scale(1.2) rotate(-20deg)}100%{transform:scale(.2) rotate(360deg);opacity:0}}
+.loot{position:absolute;left:50%;translate:-50% 0;gap:4px!important;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);display:flex;gap:6px;z-index:8;pointer-events:none}
+.loot i{width:clamp(26px,8vw,40px);height:clamp(26px,8vw,40px);border-radius:12px;background:rgba(255,255,255,.7);border:2px dashed rgba(42,40,64,.3);overflow:hidden}
+.loot i svg{width:100%;height:100%;display:block}
+.loot i.got{background:#fff;border:3px solid #ffd23f;animation:pbump .6s ease-out}
+
+/* Froggy Jump */
+.bg-pond{background:linear-gradient(180deg,#9fd8f5 0%,#d7f1fb 55%,#bfe7d0 74%)}
+.reeds{position:absolute;left:0;right:0;top:56%;height:18%;width:100%;pointer-events:none}
+.pondwater{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,#5fb8e0,#3f8fc0);box-shadow:inset 0 6px 0 rgba(255,255,255,.35)}
+.lily{position:absolute;width:clamp(120px,34vw,200px);aspect-ratio:2.4;translate:-50% -30%;border-radius:50%;background:radial-gradient(circle at 50% 40%,#7cc96b,#4f9a54);clip-path:polygon(0 0,46% 0,50% 50%,54% 0,100% 0,100% 100%,0 100%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.12)}
+.lily.small{width:clamp(60px,15vw,100px);opacity:.9}
+.fpad2{position:absolute;inset:0;z-index:3;touch-action:none}
+.frog{position:absolute;left:0;top:0;z-index:6;pointer-events:none}
+.frog svg{width:100%;display:block;filter:drop-shadow(0 4px 3px rgba(0,0,0,.2));transform-origin:50% 100%}
+.frog.leap .fleg{transform-box:fill-box;transform-origin:50% 0;transform:scaleY(1.5) translateY(6px)}
+.frog.gulp svg{animation:pbump .4s ease-out}
+.frog.happy svg{animation:tiHop 1s ease-in-out 3}
+.frog:not(.leap) svg{animation:froggy 2.4s ease-in-out infinite}
+@keyframes froggy{0%,100%{transform:scale(1,1)}50%{transform:scale(1.03,.97)}}
+.tongue{position:absolute;inset:0;width:100%;height:100%;z-index:5;pointer-events:none;opacity:0}
+.tongue.on{opacity:1}
+.tongue line{stroke:#f2547a;stroke-width:9;stroke-linecap:round}
+.fly{position:absolute;left:0;top:0;z-index:4;padding:0;background:none;touch-action:none}
+.fly::before{content:"";position:absolute;inset:-16px}
+.fly svg{width:100%;display:block;pointer-events:none}
+.fly .flyw{transform-box:fill-box;transform-origin:50% 100%;animation:flyw .06s linear infinite alternate}
+@keyframes flyw{to{transform:scaleY(.4)}}
+.fly.eaten svg{animation:apop .4s ease-in forwards}
+
+.ilevel{position:absolute;left:14px;top:calc(env(safe-area-inset-top,0px) + 106px);z-index:8;font-family:var(--display);font-weight:800;font-size:1.1rem;color:#ffe27a;background:rgba(0,0,0,.35);padding:4px 12px;border-radius:999px;pointer-events:none}
+.ilevel.pop{animation:pbump .7s ease-out}
+.islime{position:absolute;left:-12px;top:-12px;width:24px;height:24px;border-radius:50%;z-index:4;pointer-events:none;background:radial-gradient(circle at 35% 30%,#e9ffc0 0 18%,#8fe05a 45%,#4fae2e 100%);box-shadow:0 0 10px rgba(140,230,90,.8)}
+.iship.slimed svg{filter:drop-shadow(0 0 10px #8fe05a) hue-rotate(60deg) saturate(1.4)}
+
+.fnext{position:absolute;width:40px;z-index:7;pointer-events:none;animation:fnext .8s ease-in-out infinite alternate;filter:drop-shadow(0 3px 2px rgba(0,0,0,.25))}
+.fnext svg,.fedge svg{width:100%;display:block}
+@keyframes fnext{to{transform:translateY(14px)}}
+.fedge{position:absolute;right:10px;width:54px;z-index:8;pointer-events:none;animation:fedge .7s ease-in-out infinite alternate;filter:drop-shadow(0 3px 2px rgba(0,0,0,.25))}
+@keyframes fedge{to{transform:translateX(10px)}}
+.fdog .dball{opacity:0}.fdog.hasball .dball{opacity:1}
+.fdog.back svg{transform:scaleX(-1)}
+.fdog.run svg{animation:pigbob .2s ease-in-out infinite alternate}
+.fdog .dtail{transform-box:fill-box;transform-origin:100% 100%;animation:wag .3s ease-in-out infinite alternate}
+@keyframes wag{to{transform:rotate(-25deg)}}
+.carrot .croot{opacity:0;transition:opacity .2s}
+.carrot.pulled .croot{opacity:1}
+.carrot.pulled svg{animation:pullup .45s ease-out forwards}
+@keyframes pullup{to{transform:translateY(-60%)}}
+.carrot svg{transform-origin:50% 40%}
+.carrot:not(.pulled) svg{clip-path:inset(0 0 55% 0)}
+.ball,.carrot{filter:drop-shadow(0 0 6px rgba(255,240,170,.9))}
+
+.fcol{position:absolute;z-index:2;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.28));border-left:2px dashed rgba(255,255,255,.55);border-right:2px dashed rgba(255,255,255,.55);pointer-events:none}
+.fly{pointer-events:none}
+.frog.dizzy svg{animation:nope .5s ease-in-out 2}
 </style>
 
 <!-- HOME -->
@@ -1561,10 +1702,14 @@ const MOVE_ICONS = {
 
 /* Menu tile pictures */
 /* how each menu picture moves, so the menu feels alive */
-const TILE_MOTION = {bedtime:'rock', sheep:'hop', lantern:'float', window:'sway', bath:'float', caterpillar:'none', unicorn:'trot', bhouse:'flutter', rainbow:'pulse',
+const TILE_MOTION = {frog:'hop', police:'zoom', pig:'trot', invaders:'crawl', bedtime:'rock', sheep:'hop', lantern:'float', window:'sway', bath:'float', caterpillar:'none', unicorn:'trot', bhouse:'flutter', rainbow:'pulse',
   cake:'wiggle', bugs:'crawl', kitty:'tilt', horse:'trot', fairy:'float', song:'float', paint:'wiggle', planets:'spinslow', rocket:'zoom', shark:'swim', ellie:'sway',
   baby:'rock', freeze:'hop', traffic:'pulse', copycat:'tilt', count:'hop', jungle:'sway', beach:'bob', sea:'swim', helpers:'wiggle', football:'roll'};
 const ICONS = {
+  frog: () => FROG_SVG,
+  police: () => `<svg viewBox="0 0 100 100"><g transform="translate(30 6) scale(.9) rotate(20 30 50)">${COPCAR_SVG.replace(/<\/?svg[^>]*>/g,'')}</g></svg>`,
+  pig: () => pigSVG(),
+  invaders: () => alienSVG('#7ed957'),
   planets: () => planetSVG(PLANETS[5], true),
   rocket: () => ROCKET_SVG,
   paint: () => `<svg viewBox="0 0 100 100"><path d="M50 12 C24 12 8 32 10 54 C12 74 30 88 48 86 C60 85 58 74 52 70 C46 66 50 58 60 58 C80 60 92 50 90 36 C88 22 72 12 50 12Z" fill="#fff4e2" stroke="#3a2a40" stroke-width="3"/><circle cx="30" cy="40" r="8" fill="#f2545b"/><circle cx="48" cy="28" r="8" fill="#ffd23f"/><circle cx="68" cy="32" r="8" fill="#4fa8e8"/><circle cx="28" cy="62" r="8" fill="#5fc46a"/><path d="M62 92 L84 60" stroke="#b07a4a" stroke-width="6" stroke-linecap="round"/><path d="M84 60 l6 -10 l4 4z" fill="#a97ae8"/></svg>`,
@@ -2546,8 +2691,10 @@ function showHow(sc, ctx, type, a, b, opt={}){
   const moved = e => { if(e.buttons || e.pointerType === 'touch') poke(); };
   sc.addEventListener('pointerdown', poke, true); sc.addEventListener('pointermove', moved, true);
   const api = { end(){ if(over) return; over = true; hide(); hand.remove(); sc.removeEventListener('pointerdown', poke, true); sc.removeEventListener('pointermove', moved, true); } };
+  /* what the hint would point at right now (the automated tests use this to play like a child following the hand) */
+  api.peek = () => over ? null : {type, p: P(a), q: type === 'drag' ? P(b) : null};
   ctx.every(() => { if(over) return; if(!hand.isConnected){ api.end(); return; } if(!shown && Date.now() - last > (opt.idle || 6000)) play(); else if(shown && opt.track && Date.now() - shownAt > 1050) play(); }, 350);
-  ctx.onExit(api.end); ctx._how = api; return api;
+  ctx.onExit(api.end); ctx._how = api; window.__hh = api; return api;
 }
 /* A progress bar for rubbing and stirring */
 function meter(parent){ const m = el('div','meter','<i></i><b></b>'); parent.appendChild(m); const set = v => { v = Math.max(0, Math.min(1, v)); m.style.setProperty('--v', v.toFixed(3)); m.classList.toggle('full', v >= 1); }; set.remove = () => m.remove(); return set; }
@@ -4070,19 +4217,91 @@ const PBN = {
       {n:1, d:'M120 206 H180 V218 H120Z', l:[150,212,9]} ],
     details:`<circle cx="150" cy="138" r="19" fill="none" stroke="#8a93a6" stroke-width="4"/><path d="M140 130 q6 -6 12 -4" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>
       <g fill="#fff">${[[30,28,2],[100,40,1.6],[270,150,2],[40,140,1.6],[250,250,2.2],[210,200,1.4],[70,200,1.8],[120,20,1.4],[180,30,1.6],[24,230,1.4]].map(([x,y,r]) => `<circle cx="${x}" cy="${y}" r="${r}"/>`).join('')}</g>
-      <g fill="#fff" opacity=".9"><path d="M270 120 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2 l5 -2z"/><path d="M90 110 l2 4 l4 2 l-4 2 l-2 4 l-2 -4 l-4 -2 l4 -2z"/></g>` }
+      <g fill="#fff" opacity=".9"><path d="M270 120 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2 l5 -2z"/><path d="M90 110 l2 4 l4 2 l-4 2 l-2 4 l-2 -4 l-4 -2 l4 -2z"/></g>` },
+  tractor: { name:'tractor', colours:{1:'#e8473b', 2:'#4a4a55', 3:'#ffd23f', 4:'#a9dcf5', 5:'#7cc96b', 6:'#bfe8ff'},
+    regions:[
+      {n:4, d:'M0 0H300V210H0Z', l:[28,30]},
+      {n:5, d:'M0 204 Q150 192 300 204 V300 H0Z', l:[160,286]},
+      {n:1, d:'M80 90 H160 V130 H250 Q262 130 262 142 V196 H70 V170 H80Z', l:[206,164]},
+      {n:6, d:'M92 102 H148 V150 H92Z', l:[120,126]},
+      {n:2, d:pE(110,212,50), l:[110,250,13]},
+      {n:3, d:pE(110,212,22), l:[110,212,13]},
+      {n:2, d:pE(234,230,30), l:[234,252,11]},
+      {n:3, d:pE(234,230,13), l:[234,230,10]} ],
+    details:`<g fill="#fff" opacity=".9"><circle cx="230" cy="52" r="13"/><circle cx="248" cy="44" r="17"/><circle cx="266" cy="54" r="12"/><rect x="228" y="52" width="40" height="14" rx="7"/></g>
+      <rect x="212" y="94" width="10" height="36" rx="3" fill="#5c5c66" stroke="#2a2840" stroke-width="2"/><path d="M217 90 q-6 -10 4 -16 q8 -6 2 -14" stroke="#9aa3ad" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+      <circle cx="256" cy="152" r="6" fill="#ffe27a" stroke="#2a2840" stroke-width="2"/><path d="M178 148 H246 M178 160 H246" stroke="#2a2840" stroke-width="1.6" opacity=".5"/>
+      <g stroke="#2a2840" stroke-width="2" opacity=".45"><path d="M110 172 V252 M70 212 H150 M82 184 L138 240 M138 184 L82 240"/></g>` },
+  train: { name:'train', colours:{1:'#e8473b', 2:'#4a6fd1', 3:'#ffd23f', 4:'#a9dcf5', 5:'#7cc96b', 6:'#4a4a55'},
+    regions:[
+      {n:4, d:'M0 0H300V214H0Z', l:[28,30]},
+      {n:5, d:'M0 210 H300 V300 H0Z', l:[150,286]},
+      {n:2, d:'M60 92 H126 V192 H60Z', l:[92,170]},
+      {n:3, d:'M52 80 H134 V94 H52Z', l:[93,87,10]},
+      {n:3, d:'M74 106 H112 V138 H74Z', l:[93,122,12]},
+      {n:1, d:'M126 130 H248 Q264 130 264 150 V192 H126Z', l:[190,164]},
+      {n:2, d:'M218 94 H242 L248 130 H212Z', l:[230,114,11]},
+      {n:3, d:'M264 166 L286 196 H264Z', l:[270,188,9]},
+      {n:6, d:pE(92,200,18) + ' ' + pE(162,202,22) + ' ' + pE(228,202,22), l:[162,202,12]} ],
+    details:`<g fill="#fff" stroke="#9aa3ad" stroke-width="2"><circle cx="232" cy="72" r="12"/><circle cx="214" cy="54" r="15"/><circle cx="190" cy="36" r="18"/></g>
+      <g stroke="#7a4f2c" stroke-width="5"><path d="M0 226 H300"/></g><g stroke="#7a4f2c" stroke-width="6">${[14,46,78,110,142,174,206,238,270].map(x => `<path d="M${x} 222 v12"/>`).join('')}</g>
+      <g fill="#ffd23f" stroke="#2a2840" stroke-width="1.6"><circle cx="92" cy="200" r="5"/><circle cx="162" cy="202" r="6"/><circle cx="228" cy="202" r="6"/></g><path d="M92 200 L228 202" stroke="#2a2840" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="256" cy="148" r="6" fill="#ffe27a" stroke="#2a2840" stroke-width="2"/><path d="M146 140 V184 M176 140 V184 M206 140 V184" stroke="#2a2840" stroke-width="1.6" opacity=".4"/>` },
+  cow: { name:'cow', colours:{1:'#e9cfa4', 2:'#4a3f3a', 3:'#f7a8c4', 4:'#a9dcf5', 5:'#7cc96b', 6:'#ffd23f'},
+    regions:[
+      {n:4, d:'M0 0H300V214H0Z', l:[28,30]},
+      {n:5, d:'M0 206 Q150 194 300 206 V300 H0Z', l:[40,284]},
+      {n:1, d:'M84 186 h18 v60 h-18Z M108 186 h18 v60 h-18Z M170 186 h18 v60 h-18Z M194 186 h18 v60 h-18Z', l:[117,230,12]},
+      {n:1, d:'M70 120 Q70 100 92 100 H196 Q216 100 216 122 V176 Q216 196 196 196 H92 Q70 196 70 176Z', l:[100,176]},
+      {n:2, d:'M120 106 Q150 96 160 122 Q156 146 130 142 Q110 132 120 106Z M172 150 Q200 144 206 166 Q200 186 180 184 Q164 172 172 150Z', l:[138,124,13]},
+      {n:1, d:pE(194,82,14,8) + ' ' + pE(270,82,14,8), l:[192,82,9]},
+      {n:6, d:'M214 68 Q206 50 218 44 Q218 56 226 64Z M250 64 Q258 56 258 44 Q270 50 262 68Z', l:[217,58,9]},
+      {n:1, d:'M202 92 Q204 64 232 64 Q260 64 262 92 L262 120 Q262 140 232 140 Q206 140 202 120Z', l:[233,75,11]},
+      {n:3, d:pE(232,124,26,16), l:[232,126,12]},
+      {n:6, d:pE(232,156,9), l:[232,157,9]} ],
+    details:`<g fill="#3a3330"><rect x="84" y="240" width="18" height="8" rx="2"/><rect x="108" y="240" width="18" height="8" rx="2"/><rect x="170" y="240" width="18" height="8" rx="2"/><rect x="194" y="240" width="18" height="8" rx="2"/></g>
+      <path d="M72 120 Q48 130 52 170" stroke="#2a2840" stroke-width="3" fill="none"/><path d="M52 168 q-8 6 -2 14 q8 0 6 -12z" fill="#4a3f3a"/>
+      <circle cx="220" cy="88" r="5" fill="#2a2840"/><circle cx="246" cy="88" r="5" fill="#2a2840"/><circle cx="221.5" cy="86.5" r="1.6" fill="#fff"/><circle cx="247.5" cy="86.5" r="1.6" fill="#fff"/>
+      <ellipse cx="222" cy="122" rx="3" ry="4.5" fill="#2a2840"/><ellipse cx="242" cy="122" rx="3" ry="4.5" fill="#2a2840"/><path d="M224 134 q8 5 16 0" stroke="#2a2840" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M232 146 v2" stroke="#2a2840" stroke-width="2"/><g fill="#fff">${[[30,250],[260,240],[200,280],[100,270]].map(([x,y]) => `<circle cx="${x}" cy="${y}" r="4"/><circle cx="${x}" cy="${y}" r="1.6" fill="#ffd23f"/>`).join('')}</g>` },
+  cake: { name:'birthday cake', colours:{1:'#f58ab8', 2:'#f6d29a', 3:'#6fb3f2', 4:'#e2d4fb', 5:'#e8473b', 6:'#ffb347'},
+    regions:[
+      {n:4, d:'M0 0H300V300H0Z', l:[28,30]},
+      {n:3, d:pE(150,252,122,22), l:[150,264,11]},
+      {n:2, d:'M60 182 H240 V244 Q150 262 60 244Z', l:[100,226]},
+      {n:1, d:'M56 168 Q150 154 244 168 V188 Q232 200 220 188 Q206 202 192 188 Q178 202 164 188 Q150 202 136 188 Q122 202 108 188 Q94 202 80 188 Q68 200 56 188Z', l:[150,176,12]},
+      {n:2, d:'M90 118 H210 V170 H90Z', l:[120,152,13]},
+      {n:1, d:'M86 106 Q150 94 214 106 V124 Q204 134 194 124 Q182 136 170 124 Q158 136 146 124 Q134 136 122 124 Q110 136 98 124 Q90 132 86 124Z', l:[124,112,11]},
+      {n:5, d:pE(100,112,9) + ' ' + pE(200,112,8), l:[100,112,9]},
+      {n:3, d:'M114 66 h14 v38 h-14Z M143 58 h14 v46 h-14Z M172 66 h14 v38 h-14Z', l:[150,86,10]},
+      {n:6, d:'M121 64 Q112 52 121 40 Q130 52 121 64Z M150 56 Q141 44 150 32 Q159 44 150 56Z M179 64 Q170 52 179 40 Q188 52 179 64Z', l:[150,47,8]} ],
+    details:`<g stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"><path d="M118 74 l10 6 M118 88 l10 6 M147 68 l10 6 M147 84 l10 6 M176 74 l10 6 M176 88 l10 6"/></g>
+      <g stroke-width="4" stroke-linecap="round">${[[78,214,'#6fb3f2'],[130,232,'#ffd23f'],[176,214,'#5fc46a'],[214,232,'#b07ce0'],[110,146,'#ffd23f'],[188,150,'#6fb3f2'],[160,160,'#5fc46a']].map(([x,y,c]) => `<path d="M${x} ${y} l6 -4" stroke="${c}"/>`).join('')}</g>
+      <g fill="#fff">${[[40,60],[250,50],[270,150],[30,170]].map(([x,y]) => `<path d="M${x} ${y-6} l2 4 l4 2 l-4 2 l-2 4 l-2 -4 l-4 -2 l4 -2z"/>`).join('')}</g>` },
+  clock: { name:'clock', colours:{1:'#e8473b', 2:'#fff1c2', 3:'#4a6fd1', 4:'#bde6c4', 5:'#ffd23f', 6:'#4a4a55'},
+    regions:[
+      {n:4, d:'M0 0H300V300H0Z', l:[28,30]},
+      {n:5, d:pE(96,74,30) + ' ' + pE(204,74,30), l:[90,64,12]},
+      {n:6, d:'M100 240 L82 280 L118 258Z M200 240 L218 280 L182 258Z', l:[100,262,9]},
+      {n:1, d:pE(150,162,98), l:[150,74,13]},
+      {n:2, d:pE(150,162,78), l:[116,196,13]},
+      {n:3, d:'M142 166 L150 108 L158 166Z M146 154 L206 166 L146 174Z', l:[184,166,8]} ],
+    details:`<path d="M96 56 Q150 20 204 56" stroke="#2a2840" stroke-width="4" fill="none"/><circle cx="150" cy="38" r="6" fill="#4a4a55"/>
+      <g font-family="Grandstander, sans-serif" font-weight="800" font-size="20" fill="#2a2840" text-anchor="middle" dominant-baseline="central"><text x="150" y="100">12</text><text x="214" y="162">3</text><text x="150" y="226">6</text><text x="86" y="162">9</text></g>
+      <g fill="#2a2840">${[30,60,120,150,210,240,300,330].map(a => { const r = a*Math.PI/180; return `<circle cx="${(150 + 66*Math.sin(r)).toFixed(1)}" cy="${(162 - 66*Math.cos(r)).toFixed(1)}" r="3"/>`; }).join('')}</g>
+      <circle cx="150" cy="162" r="7" fill="#2a2840"/>` }
 };
 const pbnSVG = (key, painted) => { const P = PBN[key];
   return `<svg viewBox="0 0 300 300" aria-hidden="true">${P.regions.map((r, i) => `<g class="pbr" data-i="${i}"${painted ? '' : ` role="button" aria-label="Shape number ${r.n}"`}>${(r.l[2] || 16) <= 12 ? `<path class="hit" d="${r.d}"/>` : ''}<path class="vis" d="${r.d}"${r.rule ? ` fill-rule="${r.rule}"` : ''} fill="${painted ? P.colours[r.n] : '#ffffff'}"/></g>`).join('')}
     <g class="pbd">${P.details}</g>
     <g class="pbl">${painted ? '' : P.regions.map((r, i) => `<text data-i="${i}" x="${r.l[0]}" y="${r.l[1]}" font-size="${Math.round((r.l[2] || 16)*1.2)}">${r.n}</text>`).join('')}</g></svg>`; };
-GAMES.push({ id:'paint', side:'hush', name:'Paint by Numbers', tag:'Fairy, dragon, rocket and more', icon:'paint', tone:'ink',
+GAMES.push({ id:'paint', side:'hush', name:'Paint by Numbers', tag:'Animals, vehicles, cake and more', icon:'paint', tone:'ink',
   async play(sc, ctx){
     sc.className = 'scene bg-paint';
     const key = await new Promise(next => {
       sc.innerHTML = `<div class="pbpick">${Object.keys(PBN).map(k => `<button data-k="${k}" aria-label="Paint the ${PBN[k].name}">${pbnSVG(k, true)}</button>`).join('')}</div>`;
-      const W = sc.clientWidth, H = sc.clientHeight, wide = W > H*1.1, n = Object.keys(PBN).length, cols = wide ? 4 : 2, rows = Math.ceil(n/cols),
-        cell = Math.min((W - 30 - 14*(cols - 1))/cols, (H - 150 - 14*(rows - 1))/rows);
+      const W = sc.clientWidth, H = sc.clientHeight, wide = W > H*1.1, cols = wide ? 5 : 3,
+        cell = Math.min((W - 30 - 14*(cols - 1))/cols, 210);
       sc.querySelector('.pbpick').style.gridTemplateColumns = `repeat(${cols}, ${cell}px)`;
       sc.querySelectorAll('.pbpick button').forEach(b => b.addEventListener('click', () => { popSound(600); next(b.dataset.k); }, {once:true}));
       cap('Which picture shall we paint?', false); ctx.later(() => say('Which picture would you like to paint?'), 300);
@@ -4143,16 +4362,16 @@ GAMES.push({ id:'paint', side:'hush', name:'Paint by Numbers', tag:'Fairy, drago
 
 /* =================== SPACE =================== */
 const PLANETS = [
-  {id:'mercury', name:'Mercury', size:.46, a:'#d6cfc6', b:'#8d857c', fact:'Mercury is the closest to the Sun.'},
-  {id:'venus', name:'Venus', size:.62, a:'#f6dc96', b:'#c9954a', fact:'Venus is very hot and cloudy.'},
-  {id:'earth', name:'Earth', size:.64, a:'#5fb6f0', b:'#2a6fc0', fact:'Earth is our home!'},
-  {id:'mars', name:'Mars', size:.54, a:'#ee7a4a', b:'#a8391c', fact:'Mars is the red planet.'},
-  {id:'jupiter', name:'Jupiter', size:1, a:'#f0d2a8', b:'#c48552', fact:'Jupiter is the biggest planet of all!'},
-  {id:'saturn', name:'Saturn', size:.86, a:'#f6e2a4', b:'#caa35a', fact:'Saturn has beautiful rings.'},
-  {id:'uranus', name:'Uranus', size:.72, a:'#b4f0f0', b:'#4fb8c8', fact:'Uranus is icy and blue-green.'},
-  {id:'neptune', name:'Neptune', size:.7, a:'#6f9cf5', b:'#2a4fb8', fact:'Neptune is the furthest away, and very windy.'}
+  {id:'mercury', name:'Mercury', size:.46, a:'#d6cfc6', b:'#8d857c', facts:["Mercury is the closest planet to the Sun.", "Mercury is the smallest planet.", "A year on Mercury is only 88 days!", "Mercury is covered in craters, like our Moon."]},
+  {id:'venus', name:'Venus', size:.62, a:'#f6dc96', b:'#c9954a', facts:["Venus is the hottest planet.", "Venus is covered in thick yellow clouds.", "Venus spins the opposite way to Earth.", "Venus is the brightest planet in our night sky."]},
+  {id:'earth', name:'Earth', size:.64, a:'#5fb6f0', b:'#2a6fc0', facts:["Earth is our home!", "Earth is the only planet we know with plants and animals.", "Most of the Earth is covered in water.", "Earth has one Moon."]},
+  {id:'mars', name:'Mars', size:.54, a:'#ee7a4a', b:'#a8391c', facts:["Mars is the red planet.", "Mars has the tallest volcano of all the planets.", "Mars has two tiny moons.", "Robots called rovers drive around on Mars."]},
+  {id:'jupiter', name:'Jupiter', size:1, a:'#f0d2a8', b:'#c48552', facts:["Jupiter is the biggest planet of all!", "Jupiter has a giant storm called the Great Red Spot.", "Jupiter is made of gas, so you could not stand on it.", "Jupiter has lots and lots of moons."]},
+  {id:'saturn', name:'Saturn', size:.86, a:'#f6e2a4', b:'#caa35a', facts:["Saturn has beautiful rings.", "Saturn's rings are made of ice and rock.", "Saturn is so light it could float in a giant bath!", "Saturn has lots of moons."]},
+  {id:'uranus', name:'Uranus', size:.72, a:'#b4f0f0', b:'#4fb8c8', facts:["Uranus is icy and blue-green.", "Uranus rolls around the Sun on its side.", "Uranus is very, very cold."]},
+  {id:'neptune', name:'Neptune', size:.7, a:'#6f9cf5', b:'#2a4fb8', facts:["Neptune is the furthest planet from the Sun.", "Neptune has the fastest winds of any planet.", "Neptune is a deep blue colour.", "It takes Neptune 165 years to go around the Sun."]}
 ];
-const MOON_BODY = {id:'moon', name:'Moon', size:.5, a:'#e4e4e8', b:'#9a9aa4'};
+const MOON_BODY = {id:'moon', name:'Moon', size:.5, a:'#e4e4e8', b:'#9a9aa4', facts:["The Moon is grey and rocky.", "Astronauts have walked on the Moon.", "The Moon has no wind, so footprints there stay for a very long time.", "The Moon goes around the Earth."]};
 function planetSVG(p, face = true){
   const id = 'pl' + (++UID), c = `url(#${id}c)`;
   const feat = {
@@ -4208,7 +4427,7 @@ GAMES.push({ id:'planets', side:'hush', name:'Planet Parade', tag:'Put the plane
       if(!ctx.alive()) return;
       item.remove(); slot.classList.add('filled'); slot.innerHTML = planetSVG(slot._p, true); slot.disabled = true;
       placed++; chime(PENTA[placed % 6]*(placed > 5 ? 2 : 1)); sparkleSound(Math.min(placed, 7));
-      cap(slot._p.fact, false); say(slot._p.fact);
+      const fact = pick(slot._p.facts); cap(fact, false); say(fact);
       if(placed === PLANETS.length) finale();
     };
     const wrong = (item, slot) => {
@@ -4265,11 +4484,11 @@ const ROCKET_SVG = `<svg viewBox="0 0 140 80" aria-hidden="true"><g class="rflam
   <circle cx="74" cy="40" r="10" fill="#9fd3f2" stroke="#4a6fd1" stroke-width="3"/><circle cx="71" cy="37" r="3" fill="#fff" opacity=".8"/>
   <rect x="40" y="34" width="16" height="12" rx="3" fill="#4fa8e8" opacity=".6"/></svg>`;
 const STOPS = [
-  {body:MOON_BODY, item:'rock', hello:'Here is the Moon! What shall we drop on the Moon?', yes:'Moon rock! The Moon is grey and rocky.', hint:'The Moon is grey and rocky.'},
-  {body:PLANETS[3], item:'dust', hello:'Here is Mars! What does Mars need?', yes:'Red dust! Mars is the red planet, covered in red dust.', hint:'Mars is red and dusty.'},
-  {body:PLANETS[4], item:'cloud', hello:'Here is Jupiter! What belongs on Jupiter?', yes:'A stormy cloud! Jupiter is made of gas and has a giant storm.', hint:'Jupiter is a big stormy, cloudy planet.'},
-  {body:PLANETS[5], item:'ice', hello:'Here is Saturn! What do Saturn\'s rings need?', yes:'Ice! Saturn\'s rings are made of ice and rock.', hint:'Saturn\'s rings are made of ice.'},
-  {body:PLANETS[2], item:'soil', hello:'Back home to Earth! What shall we drop on Earth?', yes:'Soil! Now a flower can grow on Earth, our home.', hint:'Plants grow in soil on Earth.'}
+  {body:MOON_BODY, item:'rock', hello:'Here is the Moon! What shall we drop on the Moon?', yes:'Moon rock!', hint:'The Moon is grey and rocky.'},
+  {body:PLANETS[3], item:'dust', hello:'Here is Mars! What does Mars need?', yes:'Red dust! Mars is covered in it.', hint:'Mars is red and dusty.'},
+  {body:PLANETS[4], item:'cloud', hello:'Here is Jupiter! What belongs on Jupiter?', yes:'A stormy cloud!', hint:'Jupiter is a big stormy, cloudy planet.'},
+  {body:PLANETS[5], item:'ice', hello:'Here is Saturn! What do Saturn\'s rings need?', yes:'Ice for Saturn\'s rings!', hint:'Saturn\'s rings are made of ice.'},
+  {body:PLANETS[2], item:'soil', hello:'Back home to Earth! What shall we drop on Earth?', yes:'Soil! Now a flower can grow.', hint:'Plants grow in soil on Earth.'}
 ];
 GAMES.push({ id:'rocket', side:'hush', name:'Space Delivery', tag:'Fly, land and deliver to the planets', icon:'rocket', tone:'moon',
   async play(sc, ctx){
@@ -4343,7 +4562,7 @@ GAMES.push({ id:'rocket', side:'hush', name:'Space Delivery', tag:'Fly, land and
           for(let i=0;i<10;i++){ const sp = el('i','spark'); sp.style.left = (Q.cx + rnd(-Q.r, Q.r)*.7)+'px'; sp.style.top = (Q.cy + rnd(-Q.r, Q.r)*.7)+'px'; sp.style.setProperty('--c', pick(['#fff6c2','#9fd3f2','#f6a5c8'])); sc.appendChild(sp); setTimeout(() => sp.remove(), 1600); }
           if(st.item === 'soil'){ const fl = el('div','eflower', `<svg viewBox="0 0 40 60"><path d="M20 58 V26" stroke="#4f9a54" stroke-width="4"/><path d="M20 44 Q8 36 6 44 Q14 50 20 46Z" fill="#6fbf5a"/><g fill="#f58ab8"><circle cx="20" cy="12" r="7"/><circle cx="10" cy="20" r="7"/><circle cx="30" cy="20" r="7"/><circle cx="14" cy="30" r="7"/><circle cx="26" cy="30" r="7"/></g><circle cx="20" cy="22" r="6" fill="#ffd23f"/></svg>`);
             Object.assign(fl.style, {left: (Q.cx + Q.r*.45) + 'px', top: (Q.cy - Q.r*.78) + 'px'}); sc.appendChild(fl); }
-          sparkleSound(k + 2); cap(st.yes, false); say(st.yes); bar((k + 1)/STOPS.length);
+          const line = st.yes + ' ' + pick(st.body.facts); sparkleSound(k + 2); cap(line, false); say(line); bar((k + 1)/STOPS.length);
           await ctx.wait(4200); next();
         };
         choices.forEach(c => {
@@ -4368,6 +4587,194 @@ GAMES.push({ id:'rocket', side:'hush', name:'Space Delivery', tag:'Fly, land and
       }
     }
     cheer(); cap('Space mission complete!'); await ctx.wait(3500); finish(ctx, 'Mission complete!');
+  }
+});
+
+/* =================== PIG'S FARM DAY =================== */
+function pigSVG(){
+  return `<svg viewBox="0 0 120 92" aria-hidden="true">
+    <g class="pleg pl1" fill="#f08fb2"><rect x="30" y="62" width="10" height="24" rx="4"/><rect x="70" y="62" width="10" height="24" rx="4"/></g>
+    <path d="M18 44 q-12 -4 -8 -12 q4 -6 8 -1 q2 4 -3 5" stroke="#e57aa0" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="54" cy="52" rx="38" ry="25" fill="#f7a8c4" stroke="#d9799c" stroke-width="2"/>
+    <g class="pleg pl2" fill="#f7a8c4" stroke="#d9799c" stroke-width="1.5"><rect x="40" y="64" width="11" height="24" rx="4"/><rect x="78" y="64" width="11" height="24" rx="4"/></g>
+    <g class="pmud" fill="#7a5230"><ellipse cx="42" cy="44" rx="9" ry="6"/><ellipse cx="66" cy="60" rx="10" ry="7"/><ellipse cx="30" cy="62" rx="6" ry="4"/><ellipse cx="96" cy="36" rx="5" ry="4"/><ellipse cx="58" cy="34" rx="5" ry="3"/></g>
+    <circle cx="92" cy="44" r="19" fill="#f7a8c4" stroke="#d9799c" stroke-width="2"/>
+    <path d="M80 28 L84 12 L94 26Z" fill="#f08fb2" stroke="#d9799c" stroke-width="2" stroke-linejoin="round"/>
+    <ellipse cx="109" cy="49" rx="8" ry="9" fill="#f08fb2" stroke="#d9799c" stroke-width="2"/><ellipse cx="107" cy="47" rx="1.6" ry="2.4" fill="#a14d6c"/><ellipse cx="111" cy="51" rx="1.6" ry="2.4" fill="#a14d6c"/>
+    <circle cx="94" cy="38" r="3.2" fill="#2a2840"/><circle cx="95" cy="37" r="1.1" fill="#fff"/><path d="M92 54 q4 4 9 1" stroke="#a14d6c" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="86" cy="50" r="3.5" fill="#ff7aa8" opacity=".45"/></svg>`;
+}
+function cowSVG(){
+  return `<svg viewBox="0 0 150 110" aria-hidden="true"><g fill="#efe3d0" stroke="#3a3330" stroke-width="2"><rect x="36" y="64" width="12" height="40" rx="4"/><rect x="58" y="66" width="12" height="38" rx="4"/><rect x="100" y="66" width="12" height="38" rx="4"/><rect x="120" y="64" width="12" height="40" rx="4"/></g>
+    <g fill="#3a3330"><rect x="36" y="98" width="12" height="7" rx="2"/><rect x="58" y="98" width="12" height="7" rx="2"/><rect x="100" y="98" width="12" height="7" rx="2"/><rect x="120" y="98" width="12" height="7" rx="2"/></g>
+    <path d="M140 44 q12 10 6 34" stroke="#3a3330" stroke-width="3" fill="none"/><path d="M146 76 q6 6 0 10 q-6 -2 0 -10z" fill="#3a3330"/>
+    <rect x="30" y="30" width="112" height="48" rx="20" fill="#efe3d0" stroke="#3a3330" stroke-width="2.4"/>
+    <g fill="#4a3f3a"><path d="M70 32 Q96 30 98 50 Q92 66 72 60 Q58 50 70 32Z"/><path d="M114 52 Q132 50 136 64 Q128 76 114 72 Q106 62 114 52Z"/></g>
+    <g class="chead"><path d="M22 18 Q14 6 24 2 Q24 12 30 16Z M44 16 Q50 8 48 0 Q58 6 50 18Z" fill="#ffd23f" stroke="#3a3330" stroke-width="1.6"/><ellipse cx="12" cy="26" rx="10" ry="6" fill="#efe3d0" stroke="#3a3330" stroke-width="2"/><ellipse cx="56" cy="26" rx="10" ry="6" fill="#efe3d0" stroke="#3a3330" stroke-width="2"/>
+    <rect x="16" y="12" width="36" height="46" rx="16" fill="#efe3d0" stroke="#3a3330" stroke-width="2.4"/><ellipse cx="34" cy="52" rx="20" ry="13" fill="#f7a8c4" stroke="#3a3330" stroke-width="2"/>
+    <circle cx="26" cy="30" r="3.4" fill="#2a2840"/><circle cx="42" cy="30" r="3.4" fill="#2a2840"/><ellipse cx="28" cy="52" rx="2.4" ry="3.4" fill="#2a2840"/><ellipse cx="40" cy="52" rx="2.4" ry="3.4" fill="#2a2840"/></g></svg>`;
+}
+function henSVG(c = '#c98a4a'){
+  return `<svg viewBox="0 0 60 60" aria-hidden="true"><path d="M22 50 v8 M32 50 v8" stroke="#e8a92a" stroke-width="3" stroke-linecap="round"/><path d="M8 30 Q2 18 10 14 Q10 24 14 26Z" fill="${c}"/>
+    <ellipse cx="28" cy="36" rx="20" ry="16" fill="${c}" stroke="#7a4f2c" stroke-width="2"/><path d="M20 34 q8 8 16 0" stroke="#7a4f2c" stroke-width="2" fill="none"/>
+    <circle cx="44" cy="22" r="10" fill="${c}" stroke="#7a4f2c" stroke-width="2"/><path d="M40 12 q2 -6 5 -1 q3 -6 5 0 q2 4 -2 5Z" fill="#e8473b"/><path d="M53 22 l7 3 l-7 3Z" fill="#ffb347"/><path d="M48 30 q2 5 -2 6" fill="#e8473b"/><circle cx="47" cy="20" r="2" fill="#2a2840"/></svg>`;
+}
+const DOG_SVG = `<svg viewBox="0 0 100 80" aria-hidden="true"><g fill="#c98f5a" stroke="#7a4f2c" stroke-width="2"><rect x="22" y="48" width="10" height="26" rx="4"/><rect x="62" y="48" width="10" height="26" rx="4"/></g>
+  <path d="M14 40 q-12 -10 -6 -22" stroke="#c98f5a" stroke-width="7" fill="none" stroke-linecap="round" class="dtail"/>
+  <ellipse cx="46" cy="46" rx="32" ry="18" fill="#d9a26a" stroke="#7a4f2c" stroke-width="2"/><ellipse cx="44" cy="50" rx="16" ry="9" fill="#f3dcc0"/>
+  <g fill="#d9a26a" stroke="#7a4f2c" stroke-width="2"><rect x="30" y="50" width="10" height="26" rx="4"/><rect x="54" y="50" width="10" height="26" rx="4"/></g>
+  <circle cx="76" cy="28" r="16" fill="#d9a26a" stroke="#7a4f2c" stroke-width="2"/><path d="M66 18 Q56 26 62 44 Q70 38 70 24Z" fill="#7a4f2c"/>
+  <ellipse cx="91" cy="32" rx="8" ry="6" fill="#f3dcc0" stroke="#7a4f2c" stroke-width="1.5"/><circle cx="97" cy="30" r="3" fill="#2a2840"/><circle cx="80" cy="24" r="2.6" fill="#2a2840"/><path d="M86 38 q4 3 8 0" stroke="#2a2840" stroke-width="1.6" fill="none"/>
+  <path d="M60 40 h22" stroke="#e8473b" stroke-width="5" stroke-linecap="round"/><circle class="dball" cx="98" cy="40" r="7" fill="#e8473b" stroke="#a82a20" stroke-width="1.5"/></svg>`;
+const KENNEL_SVG = `<svg viewBox="0 0 100 90" aria-hidden="true"><path d="M8 40 L50 6 L92 40Z" fill="#c45a4a" stroke="#7a2a22" stroke-width="3" stroke-linejoin="round"/><rect x="16" y="38" width="68" height="50" fill="#e9c27a" stroke="#a87a2a" stroke-width="3"/><path d="M38 88 V62 Q50 48 62 62 V88Z" fill="#4f311b"/></svg>`;
+const BARN_SVG = `<svg viewBox="0 0 160 140" aria-hidden="true"><path d="M8 60 L80 8 L152 60 V138 H8Z" fill="#d6463b" stroke="#7a2a22" stroke-width="3"/><path d="M0 64 L80 4 L160 64" stroke="#f5f0e8" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <rect x="52" y="78" width="56" height="60" fill="#b5352c" stroke="#f5f0e8" stroke-width="5"/><path d="M52 78 L108 138 M108 78 L52 138" stroke="#f5f0e8" stroke-width="5"/><rect x="66" y="38" width="28" height="22" fill="#f6d29a" stroke="#f5f0e8" stroke-width="4"/></svg>`;
+const HAY_SVG = `<svg viewBox="0 0 80 56" aria-hidden="true"><rect x="4" y="8" width="72" height="44" rx="8" fill="#f2cf63" stroke="#c99a2e" stroke-width="3"/><path d="M4 22 H76 M4 38 H76" stroke="#c99a2e" stroke-width="2.5"/><path d="M14 8 l-4 -6 M30 8 l2 -7 M52 8 l-2 -6 M66 8 l4 -6" stroke="#e0b13d" stroke-width="2.5" stroke-linecap="round"/></svg>`;
+const HENHOUSE_SVG = `<svg viewBox="0 0 120 110" aria-hidden="true"><path d="M10 48 L60 10 L110 48Z" fill="#7a4f2c" stroke="#4f311b" stroke-width="3" stroke-linejoin="round"/><rect x="18" y="46" width="84" height="54" fill="#f2c56b" stroke="#a87a2a" stroke-width="3"/>
+  <path d="M52 100 V72 Q60 60 68 72 V100Z" fill="#4f311b"/><path d="M60 100 L84 108" stroke="#a87a2a" stroke-width="5" stroke-linecap="round"/><path d="M8 102 Q60 94 112 102 L112 110 H8Z" fill="#f2cf63"/></svg>`;
+const BASKET_SVG = `<svg viewBox="0 0 70 54" aria-hidden="true"><path d="M14 24 Q35 -6 56 24" stroke="#a87a2a" stroke-width="5" fill="none"/><path d="M4 24 H66 L58 52 H12Z" fill="#c98f5a" stroke="#7a4f2c" stroke-width="3" stroke-linejoin="round"/><path d="M10 34 H60 M14 44 H56" stroke="#7a4f2c" stroke-width="2" opacity=".6"/></svg>`;
+const EGG_SVG = `<svg viewBox="0 0 30 38" aria-hidden="true"><ellipse cx="15" cy="21" rx="12" ry="15" fill="#fff4dc" stroke="#d9c59a" stroke-width="2"/><ellipse cx="11" cy="15" rx="3" ry="5" fill="#fff" opacity=".8"/></svg>`;
+const BREAD_SVG = `<svg viewBox="0 0 70 50" aria-hidden="true"><path d="M8 26 Q8 6 35 6 Q62 6 62 26 V44 H8Z" fill="#e8b46a" stroke="#a8743a" stroke-width="3"/><path d="M14 26 Q14 12 35 12 Q56 12 56 26 V40 H14Z" fill="#fbe7c2"/></svg>`;
+const TREE_SVG = `<svg viewBox="0 0 140 170" aria-hidden="true"><path d="M62 170 V96 Q60 84 50 76 M70 120 Q80 100 92 92" stroke="#7a4f2c" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <g fill="#5fb35e" stroke="#3f8a3e" stroke-width="2.5"><circle cx="40" cy="60" r="34"/><circle cx="96" cy="58" r="36"/><circle cx="70" cy="34" r="34"/><circle cx="70" cy="76" r="30"/></g>
+  <g fill="#e8473b"><circle cx="36" cy="58" r="7"/><circle cx="98" cy="44" r="7"/><circle cx="70" cy="70" r="7"/><circle cx="58" cy="28" r="6"/><circle cx="110" cy="74" r="6"/></g></svg>`;
+const APPLE_SVG = `<svg viewBox="0 0 40 44" aria-hidden="true"><path d="M20 12 C8 4 0 16 4 28 C8 40 16 44 20 40 C24 44 32 40 36 28 C40 16 32 4 20 12Z" fill="#e8473b" stroke="#a82a20" stroke-width="2"/><path d="M20 12 q0 -8 4 -10" stroke="#7a4f2c" stroke-width="3" fill="none"/><path d="M22 6 q8 -6 12 0 q-6 4 -12 0z" fill="#5fb35e"/><ellipse cx="12" cy="22" rx="3" ry="6" fill="#fff" opacity=".4"/></svg>`;
+function farmSound(kind){
+  const c = audio(); if(!c) return; const t = now();
+  const v = (f0, f1, dur, type, vol, freq = 1200) => { const o = c.createOscillator(), g = c.createGain(), fl = c.createBiquadFilter(); o.type = type; fl.type = 'lowpass'; fl.frequency.value = freq;
+    o.frequency.setValueAtTime(f0, t); o.frequency.linearRampToValueAtTime(f1, t + dur); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .05); g.gain.setValueAtTime(vol, t + dur*.7); g.gain.exponentialRampToValueAtTime(.001, t + dur);
+    o.connect(fl); fl.connect(g); g.connect(c.destination); o.start(t); o.stop(t + dur + .05); };
+  if(kind === 'oink'){ [0, .22].forEach(d => setTimeout(() => { const t2 = now(); tone(300, t2, .12, 'sawtooth', .05); noise(t2, .1, .05, 700, 'bandpass'); }, d*1000)); }
+  if(kind === 'moo') v(180, 120, 1.1, 'sawtooth', .1, 600);
+  if(kind === 'cluck') [0, .14, .28].forEach(d => tone(720 - d*400, t + d, .07, 'square', .04));
+  if(kind === 'quack') [0, .25].forEach(d => { tone(520, t + d, .14, 'sawtooth', .05); noise(t + d, .12, .04, 1400, 'bandpass'); });
+  if(kind === 'baa'){ const o = c.createOscillator(), g = c.createGain(), l = c.createOscillator(), lg = c.createGain(); o.type = 'sawtooth'; o.frequency.value = 330; l.frequency.value = 9; lg.gain.value = 18; l.connect(lg); lg.connect(o.frequency);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.06, t + .08); g.gain.exponentialRampToValueAtTime(.001, t + .9); o.connect(g); g.connect(c.destination); o.start(t); l.start(t); o.stop(t + 1); l.stop(t + 1); }
+  if(kind === 'woof') [0, .22].forEach(d => { tone(260, t + d, .1, 'sawtooth', .07); noise(t + d, .08, .06, 900, 'bandpass'); });
+  if(kind === 'splash'){ noise(t, .5, .12, 900); noise(t + .1, .4, .06, 2400, 'highpass'); }
+}
+GAMES.push({ id:'farm', side:'hush', name:'Pig\'s Farm Day', tag:'Help the farm animals with Pig', icon:'pig', tone:'ink',
+  async play(sc, ctx){
+    sc.className = 'scene bg-farm';
+    const W = sc.clientWidth, H = sc.clientHeight, ground = H*.8, D = Math.max(W*.9, 380), sw = Math.min(W*.64, H*.6, 440), pw = Math.min(W*.28, sw*.46);
+    const STATIONS = [
+      {id:'cow', x: W*.5 + D*.9, ask:'The cow is hungry. Tap the hay to feed her!', done:'Moo! Thank you, Pig!'},
+      {id:'hens', x: W*.5 + D*1.9, ask:'The hens have laid eggs. Tap the eggs to put them in the basket!', done:'Cluck cluck! All the eggs are in the basket.'},
+      {id:'dog', x: W*.5 + D*2.9, ask:'The dog wants to play! Tap the ball to throw it.', done:'Woof woof! Good fetching!'},
+      {id:'pond', x: W*.5 + D*3.9, ask:'The ducks look hungry. Tap the bread to feed them!', done:'Quack quack! The ducks love bread.'},
+      {id:'veg', x: W*.5 + D*4.9, ask:'Carrots are growing! Tap the green leaves to pull them up.', done:'Crunchy carrots, all picked!'},
+      {id:'tree', x: W*.5 + D*5.9, ask:'Tap the apple tree to shake down some apples!', done:'Crunch! Apples for everyone.'},
+      {id:'mud', x: W*.5 + D*6.9, ask:'A big muddy puddle! Tap the mud.', done:'Oink oink! Pigs love mud!'}
+    ];
+    const worldW = STATIONS[STATIONS.length - 1].x + D*.7;
+    const nH = Math.ceil(worldW/W) + 1, hp = (y, a, b) => Array.from({length:nH}, (_, i) => { const o = i*400; return `${i ? '' : `M0 ${y}`} Q${o+60} ${a} ${o+120} ${y-8} T${o+240} ${y-14} T${o+400} ${y}`; }).join(' ');
+    const hills = `<svg class="fhills" viewBox="0 0 ${nH*400} 100" preserveAspectRatio="none"><path d="${hp(70, 20)} V100 H0Z" fill="#9fd49a"/><path d="${hp(84, 52)} V100 H0Z" fill="#7cc96b"/></svg>`;
+    sc.innerHTML = `<div class="fworld" style="width:${worldW}px"><div class="fhillwrap" style="left:0;width:${nH*W}px">${hills}</div>
+      <div class="fground" style="top:${ground - 10}px"></div><div class="fpath" style="top:${ground - 26}px"></div>
+      ${Array.from({length: Math.ceil(worldW/60)}, (_, i) => `<i class="fpost" style="left:${i*60}px;top:${ground - H*.17}px;height:${H*.1}px"></i>`).join('')}<div class="frail" style="top:${ground - H*.15}px"></div><div class="frail" style="top:${ground - H*.11}px"></div></div>
+      <div class="fstars">${STATIONS.map(() => '<i></i>').join('')}</div><div class="fnight"></div>`;
+    const world = sc.querySelector('.fworld'), stars = [...sc.querySelectorAll('.fstars i')];
+    const pig = el('div','fpig', `<div class="fpin">${pigSVG()}</div>`); pig.style.width = pw + 'px'; world.appendChild(pig);
+    const ph = pw*92/120;
+    let px = W*.3, tx = px, cam = 0, face = 1, active = null, raf = 0, walking = false, left = STATIONS.length, over = false;
+    const place = (e, x, w, bottom = ground) => { Object.assign(e.style, {left: (x - w/2) + 'px', width: w + 'px', top: 'auto', bottom: (H - bottom) + 'px'}); world.appendChild(e); return e; };
+    const sayBoth = t => { cap(t, false); say(t); };
+    const at = e => { const r = e.getBoundingClientRect(), o = world.getBoundingClientRect(); return [r.left - o.left + r.width/2, r.top - o.top + r.height/2]; };
+    const flyIn = async (item, target, scale = .4) => { const r = target.getBoundingClientRect(); await flyTo(item, r.left + r.width/2, r.top + r.height*.45, {scale, ms:700}); };
+    const sparkle = (x, y, n = 6) => { for(let i=0;i<n;i++){ const sp = el('i','spark'); sp.style.left = (x + rnd(-24,24))+'px'; sp.style.top = (y + rnd(-24,24))+'px'; sp.style.setProperty('--c', pick(['#fff6c2','#f6a5c8','#9fd3f2'])); world.appendChild(sp); setTimeout(() => sp.remove(), 1500); } };
+    const walkTo = x => { if(active || over) return; tx = Math.max(pw*.5, Math.min(worldW - pw*.5, x)); };
+    const stand = st => st.x - sw*.5 - pw*.2;
+    /* the camera follows Pig, and frames the whole stop once Pig gets there */
+    const camWant = () => Math.max(0, Math.min(worldW - W, active ? ((st => (st.x - sw*.5 - pw*.75 + st.x + sw*.56)/2)(active)) - W/2 : px - W*.42));
+    /* build the stations */
+    const S = {};
+    STATIONS.forEach(st => {
+      const b = S[st.id] = {st, btns:[]};
+      const btn = (cls, html, x, w, bottom, label) => { const e = el('button', 'fprop ' + cls, html); e.setAttribute('aria-label', label); place(e, x, w, bottom); b.btns.push(e);
+        e.addEventListener('click', ev => { if(active !== st){ walkTo(stand(st)); return; } b.act && b.act(e); }); return e; };
+      const prop = (cls, html, x, w, bottom) => place(el('div', 'fprop ' + cls, html), x, w, bottom);
+      if(st.id === 'cow'){ prop('barn', BARN_SVG, st.x + sw*.22, sw*.62, ground - 6); b.animal = prop('fcow', cowSVG(), st.x - sw*.08, sw*.56, ground + 4); b.hay = btn('hay', HAY_SVG, st.x + sw*.42, sw*.26, ground + 2, 'Hay');
+        b.act = async e => { if(e.dataset.eaten) return; e.dataset.eaten = 1; ctx._how && ctx._how.end(); await flyIn(e, b.animal.querySelector('.chead') || b.animal, .3); e.remove(); b.animal.classList.add('munch'); for(let k=0;k<3;k++){ noise(now(), .07, .12, 1100); await ctx.wait(380); } b.animal.classList.remove('munch'); farmSound('moo'); complete(st); }; }
+      if(st.id === 'hens'){ prop('henhouse', HENHOUSE_SVG, st.x + sw*.28, sw*.46, ground - 4); b.hens = [prop('fhen', henSVG(), st.x - sw*.2, sw*.2, ground), prop('fhen h2', henSVG('#f2f0ea'), st.x + sw*.02, sw*.17, ground - 2)];
+        b.basket = prop('basket', BASKET_SVG, st.x + sw*.5, sw*.2, ground + 2); let got = 0;
+        [-.36, -.08, .14].forEach((dx, i) => btn('egg', EGG_SVG, st.x + sw*dx + sw*.05, sw*.12, ground + 4 + (i % 2)*6, 'Egg'));
+        b.act = async e => { if(e.dataset.eaten) return; e.dataset.eaten = 1; ctx._how && ctx._how.end(); farmSound('cluck'); await flyIn(e, b.basket, .7); e.classList.add('inbasket'); got++; bignum(sc, got); say(WORDS[got]); if(got === 3){ await ctx.wait(600); complete(st); } }; }
+      if(st.id === 'dog'){ prop('kennel', KENNEL_SVG, st.x + sw*.3, sw*.42, ground - 2); b.dog = prop('fdog', DOG_SVG, st.x - sw*.05, sw*.3, ground + 2); let throws = 0;
+        b.ball = btn('ball', `<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#e8473b" stroke="#a82a20" stroke-width="2.5"/><path d="M6 16 Q20 26 34 16" stroke="#fff" stroke-width="3" fill="none"/></svg>`, st.x - sw*.36, sw*.12, ground + 2, 'Ball');
+        b.act = async e => { if(b.busy) return; b.busy = true; ctx._how && ctx._how.end(); const far = sw*.9;
+          await e.animate([{transform:'none'},{transform:`translate(${far*.5}px,${-sw*.35}px) rotate(300deg)`},{transform:`translate(${far}px,0) rotate(600deg)`}],{duration:800, easing:'ease-out', fill:'forwards'}).finished.catch(() => {});
+          farmSound('woof'); b.dog.classList.add('run');
+          await b.dog.animate([{transform:'none'},{transform:`translateX(${far - sw*.2}px)`}],{duration:700, easing:'ease-in-out', fill:'forwards'}).finished.catch(() => {});
+          e.getAnimations().forEach(a => a.cancel()); e.style.visibility = 'hidden'; b.dog.classList.add('hasball', 'back');
+          await b.dog.animate([{transform:`translateX(${far - sw*.2}px)`},{transform:'none'}],{duration:800, easing:'ease-in-out', fill:'forwards'}).finished.catch(() => {});
+          b.dog.getAnimations().forEach(a => a.cancel()); b.dog.classList.remove('run', 'hasball', 'back'); e.style.visibility = ''; farmSound('woof'); throws++;
+          if(throws === 2){ complete(st); return; } sayBoth('Again! Throw it again!'); b.busy = false; }; }
+      if(st.id === 'veg'){ prop('soil', `<svg viewBox="0 0 200 50"><rect x="2" y="10" width="196" height="38" rx="14" fill="#7a5230" stroke="#4f311b" stroke-width="3"/><path d="M14 24 H186 M14 36 H186" stroke="#5c3a20" stroke-width="3" stroke-dasharray="10 8"/></svg>`, st.x - sw*.04, sw*.72, ground + 6);
+        b.crate = prop('crate', `<svg viewBox="0 0 70 50"><rect x="4" y="12" width="62" height="36" rx="4" fill="#c98f5a" stroke="#7a4f2c" stroke-width="3"/><path d="M4 26 H66 M4 38 H66" stroke="#7a4f2c" stroke-width="2"/></svg>`, st.x + sw*.5, sw*.2, ground + 2); let picked = 0;
+        [-.3, -.04, .22].forEach(dx => btn('carrot', `<svg viewBox="0 0 40 70"><g class="ctop" fill="#5fb35e"><path d="M20 26 Q8 4 4 10 Q12 18 18 28Z"/><path d="M20 26 Q20 0 26 4 Q24 16 22 28Z"/><path d="M20 28 Q34 8 38 16 Q28 22 22 30Z"/></g><path class="croot" d="M12 28 H28 L20 66Z" fill="#ff8a3d" stroke="#c8611f" stroke-width="2" stroke-linejoin="round"/></svg>`, st.x + sw*dx, sw*.12, ground - 6, 'Carrot'));
+        b.act = async e => { if(e.dataset.eaten) return; e.dataset.eaten = 1; ctx._how && ctx._how.end(); e.classList.add('pulled'); popSound(500 + picked*120); noise(now(), .2, .06, 800);
+          await ctx.wait(450); await flyIn(e, b.crate, .7); e.style.opacity = 0; picked++; bignum(sc, picked); say(WORDS[picked]); if(picked === 3){ await ctx.wait(500); complete(st); } }; }
+      if(st.id === 'pond'){ b.pond = prop('pond', `<svg viewBox="0 0 200 60"><ellipse cx="100" cy="30" rx="98" ry="28" fill="#6fc3ef" stroke="#3f8fc0" stroke-width="3"/><path d="M40 28 q14 -6 28 0 M120 36 q14 -6 28 0 M80 18 q10 -4 20 0" stroke="#fff" stroke-width="3" fill="none" opacity=".7" stroke-linecap="round"/></svg>`, st.x + sw*.12, sw*.86, ground + 10);
+        b.ducks = [prop('fduck', IMG(ART.duck), st.x + sw*.02, sw*.17, ground - 10), prop('fduck d2', IMG(ART.duck), st.x + sw*.34, sw*.14, ground - 4)];
+        btn('bread', BREAD_SVG, st.x - sw*.42, sw*.2, ground + 2, 'Bread');
+        b.act = async e => { if(e.dataset.eaten) return; e.dataset.eaten = 1; ctx._how && ctx._how.end(); await flyIn(e, b.pond, .3); e.remove(); farmSound('splash');
+          b.ducks.forEach((d, i) => d.animate([{transform:'none'},{transform:`translateX(${-sw*(.14 + i*.08)}px)`}],{duration:1600, easing:'ease-in-out', fill:'forwards'})); await ctx.wait(1700); farmSound('quack'); b.ducks.forEach(d => d.classList.add('munch')); await ctx.wait(1200); complete(st); }; }
+      if(st.id === 'tree'){ b.horse = prop('fhorse', IMG(ART.horse), st.x + sw*.38, sw*.42, ground + 2); let shaken = false, ate = 0;
+        b.tree = btn('tree', TREE_SVG, st.x - sw*.02, sw*.5, ground + 2, 'Apple tree');
+        b.act = async e => {
+          if(e === b.tree){ if(shaken) return; shaken = true; ctx._how && ctx._how.end(); e.classList.add('shake'); noise(now(), .6, .08, 1800, 'bandpass'); await ctx.wait(500);
+            [-.12, .02, .14].forEach((dx, i) => { const a = btn('apple', APPLE_SVG, st.x + sw*dx*1.3, sw*.12, ground + 6, 'Apple'); a.animate([{transform:`translateY(${-sw*.35}px)`},{transform:'none'}],{duration:500 + i*120, easing:'cubic-bezier(.5,0,1,.6)'}); });
+            sayBoth('Tap an apple to share it!'); return; }
+          if(e.dataset.eaten) return; e.dataset.eaten = 1; ctx._how && ctx._how.end(); ate++;
+          if(ate === 1){ await flyIn(e, b.horse, .5); e.remove(); b.horse.classList.add('munch'); neigh(); await ctx.wait(1100); b.horse.classList.remove('munch'); sayBoth('One for the horse!'); }
+          else { await flyIn(e, pig, .5); e.remove(); pig.classList.add('munch'); farmSound('oink'); await ctx.wait(1100); pig.classList.remove('munch'); sayBoth(ate === 2 ? 'One for Pig!' : 'And one more!'); }
+          if(ate === 3) complete(st); }; }
+      if(st.id === 'mud'){ b.sheep = prop('fsheep', IMG(ART.sheep.awake) + '<i class="splat"></i>', st.x + sw*.4, sw*.36, ground + 2);
+        b.mud = btn('mud', `<svg viewBox="0 0 200 60"><ellipse cx="100" cy="32" rx="98" ry="26" fill="#7a5230" stroke="#4f311b" stroke-width="3"/><g fill="#8f6640"><circle cx="60" cy="28" r="6"/><circle cx="130" cy="36" r="8"/><circle cx="96" cy="22" r="4"/></g></svg>`, st.x - sw*.02, sw*.62, ground + 14, 'Mud');
+        b.act = async e => { if(b.rolled) return; b.rolled = true; ctx._how && ctx._how.end();
+          const [mx] = at(e); tx = px = mx; pig.classList.add('rolling'); farmSound('splash'); await ctx.wait(400); pig.classList.add('muddy'); farmSound('oink');
+          await ctx.wait(900); b.sheep.classList.add('splashed'); farmSound('baa'); await ctx.wait(1200); pig.classList.remove('rolling'); complete(st); }; }
+    });
+    const complete = async st => {
+      const [x, y] = at(S[st.id].btns[0] || pig); sparkle(px, ground - ph);
+      stars[STATIONS.indexOf(st)].classList.add('on'); chime(PENTA[(STATIONS.length - left) % 6]*2); sayBoth(st.done); st.isDone = true; left--;
+      await ctx.wait(2600); active = null;
+      if(left === 0){ over = true; await ctx.wait(400); sc.classList.add('dusk'); sayBoth('What a busy day on the farm! Night night, Pig.'); lullaby(1); await ctx.wait(7000); finish(ctx, 'Busy day!'); return; }
+      sayBoth('Walk Pig to the next yellow arrow!');
+    };
+    const loop = () => {
+      if(!ctx.alive()) return;
+      const dx = tx - px, step = Math.min(Math.abs(dx), W*.0075);
+      walking = Math.abs(dx) > 2; if(walking){ px += Math.sign(dx)*step; face = dx > 0 ? 1 : -1; }
+      pig.classList.toggle('walking', walking); pig.style.left = (px - pw/2) + 'px'; pig.style.top = (ground - ph) + 'px'; pig.firstChild.style.transform = `scaleX(${face})`;
+      cam += (camWant() - cam)*.12; world.style.transform = `translateX(${-cam}px)`;
+      /* walking past a stop that still needs doing? Pig stops there */
+      if(!active && !over){ const st = STATIONS.find(s => !s.isDone && px > s.x - sw*.95 && px < s.x + sw*.6); if(st){ active = st; tx = stand(st); } }
+      /* Pig steps to the right spot first, so everything at this stop is on screen */
+      if(active && !active.greeted && !walking && Math.abs(px - stand(active)) < 3 && Math.abs(cam - camWant()) < 4){ active.greeted = true; arrive(active); }
+      markNext();
+      raf = requestAnimationFrame(loop);
+    };
+    const arrive = st => { face = 1; farmSound(st.id === 'cow' ? 'moo' : st.id === 'hens' ? 'cluck' : st.id === 'pond' ? 'quack' : st.id === 'dog' ? 'woof' : 'oink'); if(st.id === 'tree') neigh(); sayBoth(st.ask); };
+    let dragging = false;
+    const towards = e => { const o = world.getBoundingClientRect(); walkTo(e.clientX - o.left); };
+    world.addEventListener('pointerdown', e => { if(e.target.closest('.fprop')) return; dragging = true; towards(e); });
+    world.addEventListener('pointermove', e => { if(dragging) towards(e); });
+    ['pointerup','pointercancel','pointerleave'].forEach(n => world.addEventListener(n, () => { dragging = false; }));
+    /* a big bouncing arrow over the next stop, and one at the screen edge when it's off to the side */
+    const mark = el('div','fnext','<svg viewBox="0 0 40 50"><path d="M8 4 H32 V24 H40 L20 46 L0 24 H8Z" fill="#ffd23f" stroke="#c99a2e" stroke-width="3" stroke-linejoin="round"/></svg>'); world.appendChild(mark);
+    const edge = el('div','fedge','<svg viewBox="0 0 50 40"><path d="M4 8 V32 H24 V40 L46 20 L24 0 V8Z" fill="#ffd23f" stroke="#c99a2e" stroke-width="3" stroke-linejoin="round"/></svg>'); sc.appendChild(edge);
+    const markNext = () => { const nx = STATIONS.find(s => !s.isDone); const show = nx && !active && !over;
+      mark.style.display = show ? '' : 'none'; if(show){ mark.style.left = (nx.x - 20) + 'px'; mark.style.top = (ground - sw*.62) + 'px'; }
+      const sx = nx ? nx.x - cam : 0; edge.style.display = show && sx > W*.98 ? '' : 'none'; edge.style.top = (ground - ph*.9) + 'px'; };
+    raf = requestAnimationFrame(loop); ctx.onExit(() => cancelAnimationFrame(raf));
+    startMusic('walk', {vol:.35, shift:-2});
+    farmSound('oink'); sayBoth("Hello, I'm Pig! Tap or drag to walk me to the yellow arrow.");
+    /* the hint hand: drags Pig towards the next stop, or taps the thing to use once Pig is there */
+    const hintAct = () => { if(over || !active || !active.greeted) return null; const b = S[active.id]; return b.btns.find(e => !e.dataset.eaten && e.isConnected && e.style.visibility !== 'hidden' && !(active.id === 'tree' && e === b.tree && b.btns.length > 1)) || null; };
+    let howMode = '';
+    ctx.every(() => { const want = active ? 'tap' : 'drag'; if(want === howMode || over) return; howMode = want;
+      if(want === 'tap') showHow(sc, ctx, 'tap', hintAct, null, {idle:3500, wait:2500});
+      else showHow(sc, ctx, 'drag', () => over || active ? null : [px - cam, ground - ph*.5], () => { const nx = STATIONS.find(s => !s.isDone); return nx ? [Math.min(W*.9, nx.x - cam - sw*.3), ground - ph*.5] : null; }, {idle:3000, wait:1500}); }, 300);
   }
 });
 
@@ -5040,6 +5447,294 @@ GAMES.push({ id:'football', side:'hop', name:'Penalty Kick', tag:'Flick the ball
     ctx.later(() => say('Penalty time! Swipe your finger up from the ball to kick it into the goal.'), 500);
     await ctx.wait(600); ready = true;
     showHow(sc, ctx, 'drag', () => ready && !over ? [G.bx, G.by] : null, () => [G.cx - G.gw*.32, G.line - G.gh*.5], {idle:5000, wait:1500});
+  }
+});
+
+/* =================== STAR BLASTER (a gentle space-invaders) =================== */
+const ALIEN_COLS = ['#7ed957','#b07ce0','#ff8fc8','#4fc3f7'];
+function alienSVG(c){
+  return `<svg viewBox="0 0 80 70" aria-hidden="true"><path d="M24 54 l-8 12 M56 54 l8 12" stroke="${c}" stroke-width="6" stroke-linecap="round"/><path d="M34 58 l-2 10 M46 58 l2 10" stroke="${c}" stroke-width="6" stroke-linecap="round"/>
+    <path d="M28 14 L20 2 M52 14 L60 2" stroke="${c}" stroke-width="4" stroke-linecap="round"/><circle cx="20" cy="3" r="5" fill="#ffe27a"/><circle cx="60" cy="3" r="5" fill="#ffe27a"/>
+    <ellipse cx="40" cy="36" rx="30" ry="24" fill="${c}" stroke="rgba(0,0,0,.18)" stroke-width="2"/><ellipse cx="32" cy="26" rx="10" ry="6" fill="#fff" opacity=".35"/>
+    <ellipse cx="30" cy="36" rx="8" ry="9" fill="#fff"/><ellipse cx="50" cy="36" rx="8" ry="9" fill="#fff"/><circle cx="31" cy="38" r="4.5" fill="#2a2840"/><circle cx="51" cy="38" r="4.5" fill="#2a2840"/><circle cx="32.5" cy="36" r="1.6" fill="#fff"/><circle cx="52.5" cy="36" r="1.6" fill="#fff"/>
+    <path d="M33 49 q7 6 14 0" stroke="#2a2840" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cx="20" cy="46" r="4" fill="#ff6fa0" opacity=".4"/><circle cx="60" cy="46" r="4" fill="#ff6fa0" opacity=".4"/></svg>`;
+}
+const BLASTER_SVG = `<svg viewBox="0 0 100 80" aria-hidden="true"><path d="M44 4 Q50 -2 56 4 L60 30 H40Z" fill="#e8473b" stroke="#a82a20" stroke-width="2"/>
+  <path d="M10 70 Q12 44 34 36 H66 Q88 44 90 70Z" fill="#eef2f8" stroke="#8a93a6" stroke-width="2.5"/><path d="M4 72 Q50 58 96 72 Q96 80 86 80 H14 Q4 80 4 72Z" fill="#4fa8e8" stroke="#2f6fa8" stroke-width="2"/>
+  <ellipse cx="50" cy="46" rx="14" ry="10" fill="#9fd3f2" stroke="#4a6fd1" stroke-width="2.5"/><ellipse cx="45" cy="43" rx="4" ry="2.5" fill="#fff" opacity=".8"/>
+  <g fill="#ffd23f"><circle cx="20" cy="72" r="3"/><circle cx="50" cy="70" r="3"/><circle cx="80" cy="72" r="3"/></g></svg>`;
+const UFO_SVG = `<svg viewBox="0 0 120 60" aria-hidden="true"><ellipse cx="60" cy="24" rx="24" ry="18" fill="#bfe8ff" stroke="#4fa8e8" stroke-width="2.5" opacity=".95"/><circle cx="60" cy="26" r="9" fill="#7ed957"/><circle cx="57" cy="24" r="2.4" fill="#2a2840"/><circle cx="63" cy="24" r="2.4" fill="#2a2840"/><path d="M56 30 q4 3 8 0" stroke="#2a2840" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <ellipse cx="60" cy="38" rx="56" ry="14" fill="#c9a2ff" stroke="#7d4fd1" stroke-width="2.5"/><g fill="#ffe27a">${[16,34,52,70,88,104].map(x => `<circle cx="${x}" cy="40" r="4"/>`).join('')}</g></svg>`;
+GAMES.push({ id:'invaders', side:'hop', name:'Star Blaster', tag:'Turn the aliens into stars', icon:'invaders', tone:'moon',
+  async play(sc, ctx){
+    sc.className = 'scene bg-space';
+    sc.innerHTML = SPACE_BG(80) + `<div class="ipad"></div><div class="iship">${BLASTER_SVG}</div><div class="ilevel"></div>`;
+    const pad = sc.querySelector('.ipad'), ship = sc.querySelector('.iship'), lvl = sc.querySelector('.ilevel'), bar = meter(sc);
+    const W = sc.clientWidth, H = sc.clientHeight, tall = W < H;
+    const sw = ship.offsetWidth, sh = sw*.8, shipY = H - sh*.6 - 26;
+    const aw = Math.min(W/(tall ? 6 : 9), 74), ah = aw*70/80, cols = tall ? 4 : 6;
+    /* level 1 is gentle; level 2 is faster, bigger and the aliens drop slime bubbles to dodge */
+    const LEVELS = [{waves:[2, 3], speed:1, slime:0, ufo:1}, {waves:[3, 4], speed:1.6, slime:1, ufo:1.7}];
+    const total = LEVELS.reduce((n, L) => n + L.waves.reduce((a, r) => a + r*cols, 0) + 1, 0);
+    let level = 0, sx = W/2, tx = W/2, shots = [], aliens = [], blobs = [], fx = 0, fy = 0, dir = 1, wave = -1, cleared = 0, raf = 0, lastShot = 0, lastSlime = 0, phase = 'wait', ufo = null, frame = 0, lastFrame = 0, stunned = 0;
+    let down = false;
+    const aim = e => { const o = sc.getBoundingClientRect(); tx = Math.max(sw/2, Math.min(W - sw/2, e.clientX - o.left)); };
+    pad.addEventListener('pointerdown', e => { down = true; try{ pad.setPointerCapture(e.pointerId); }catch(_){} aim(e); });
+    pad.addEventListener('pointermove', e => { if(down || e.pointerType === 'mouse') aim(e); });
+    ['pointerup','pointercancel'].forEach(n => pad.addEventListener(n, () => { down = false; }));
+    const showLevel = () => { lvl.textContent = 'Level ' + (level + 1); lvl.classList.remove('pop'); void lvl.offsetWidth; lvl.classList.add('pop'); };
+    const startWave = i => {
+      wave = i; const rows = LEVELS[level].waves[i], gap = aw*.35, gw = cols*aw + (cols - 1)*gap;
+      fx = (W - gw)/2; fy = 120; dir = 1; aliens = [];
+      for(let r = 0; r < rows; r++) for(let c = 0; c < cols; c++){
+        const col = ALIEN_COLS[(r + i + level) % ALIEN_COLS.length], e = el('div','alien', alienSVG(col)); e.style.width = aw + 'px';
+        sc.appendChild(e); e.animate([{opacity:0},{opacity:1}],{duration:400, delay:(r*cols + c)*40, fill:'backwards'});
+        aliens.push({el:e, ox: c*(aw + gap), oy: r*(ah + gap*.6), row:r, alive:true, col});
+      }
+      phase = 'play';
+    };
+    const pop = (a, x, y) => {
+      a.alive = false; a.el.classList.add('popped'); a.el.innerHTML = `<svg viewBox="0 0 40 40"><path d="${pStar(20,20,18)}" fill="${a.col}" stroke="#fff" stroke-width="2"/></svg>`;
+      setTimeout(() => a.el.remove(), 1200);
+      chime(PENTA[(cleared + a.row) % 6]*2); cleared++; bar(cleared/total);
+      for(let i=0;i<5;i++){ const sp = el('i','spark'); sp.style.left = (x + rnd(-20,20))+'px'; sp.style.top = (y + rnd(-20,20))+'px'; sp.style.setProperty('--c', a.col); sc.appendChild(sp); setTimeout(() => sp.remove(), 1400); }
+    };
+    let prev = performance.now();
+    const loop = t => {
+      if(!ctx.alive()) return;
+      const dt = Math.min(50, t - prev); prev = t;
+      const L = LEVELS[level];
+      sx += (tx - sx)*(1 - Math.pow(.99, dt));
+      ship.style.transform = `translate(${sx - sw/2}px,${shipY - sh/2}px) rotate(${t < stunned ? Math.sin(t/40)*14 : Math.max(-12, Math.min(12, (tx - sx)*.08))}deg)`;
+      ship.classList.toggle('slimed', t < stunned);
+      /* the blaster fires little stars by itself (not while it's covered in slime) */
+      if((phase === 'play' || phase === 'ufo') && t > stunned && t - lastShot > 420){ lastShot = t; const s = el('i','istar'); sc.appendChild(s); shots.push({el:s, x:sx, y:shipY - sh*.55}); tone(1200 + rnd(0,300), now(), .06, 'sine', .025); }
+      shots.forEach(s => { s.y -= dt*H/1100; s.el.style.transform = `translate(${s.x}px,${s.y}px)`; if(s.y < 60){ s.dead = true; s.el.remove(); } });
+      if(t - lastFrame > 380){ lastFrame = t; frame ^= 1; sc.classList.toggle('aframe', !!frame); }
+      if(phase === 'play'){
+        const live = aliens.filter(a => a.alive);
+        if(live.length){
+          const minX = Math.min(...live.map(a => a.ox)), maxX = Math.max(...live.map(a => a.ox)) + aw, maxY = Math.max(...live.map(a => a.oy)) + ah;
+          fx += dir*dt*W/(tall ? 9000 : 12000)*L.speed*(1 + (1 - live.length/(L.waves[wave]*cols))*1.2);
+          if(fx + maxX > W - 8){ fx = W - 8 - maxX; dir = -1; fy += ah*.3; } else if(fx + minX < 8){ fx = 8 - minX; dir = 1; fy += ah*.3; }
+          if(fy + maxY > shipY - sh) fy = 120;
+          live.forEach(a => { const x = fx + a.ox, y = fy + a.oy; a.el.style.transform = `translate(${x}px,${y}px)`;
+            shots.forEach(s => { if(!s.dead && a.alive && s.x > x - 8 && s.x < x + aw + 8 && s.y > y - 6 && s.y < y + ah + 6){ s.dead = true; s.el.remove(); pop(a, x + aw/2, y + ah/2); } }); });
+          if(L.slime && t - lastSlime > 1700){ lastSlime = t; const a = pick(live), b = el('i','islime'); sc.appendChild(b); blobs.push({el:b, x: fx + a.ox + aw/2, y: fy + a.oy + ah}); }
+        }
+        if(!aliens.some(a => a.alive)){ phase = 'wait'; nextWave(); }
+      }
+      blobs.forEach(b => { b.y += dt*H/4200; b.el.style.transform = `translate(${b.x}px,${b.y}px)`;
+        shots.forEach(s => { if(!s.dead && !b.dead && Math.hypot(s.x - b.x, s.y - b.y) < 22){ s.dead = true; s.el.remove(); b.dead = true; b.el.remove(); popSound(900); } });
+        if(!b.dead && b.y > shipY - sh*.5 && Math.abs(b.x - sx) < sw*.42){ b.dead = true; b.el.remove(); stunned = t + 1300; tone(180, now(), .3, 'sawtooth', .05); noise(now(), .3, .08, 600); cap('Splat! Slimed! Dodge the green bubbles.', false); }
+        if(!b.dead && b.y > H){ b.dead = true; b.el.remove(); } });
+      blobs = blobs.filter(b => !b.dead);
+      if(phase === 'ufo' && ufo){
+        ufo.x += ufo.dir*dt*W/5200*L.ufo; if(ufo.x > W - ufo.w/2 - 6) ufo.dir = -1; if(ufo.x < ufo.w/2 + 6) ufo.dir = 1;
+        ufo.el.style.transform = `translate(${ufo.x - ufo.w/2}px,${ufo.y}px)`;
+        shots.forEach(s => { if(!s.dead && phase === 'ufo' && Math.abs(s.x - ufo.x) < ufo.w*.5 && s.y < ufo.y + ufo.w*.5 && s.y > ufo.y - 10){ s.dead = true; s.el.remove(); phase = 'done'; win(); } });
+      }
+      shots = shots.filter(s => !s.dead);
+      raf = requestAnimationFrame(loop);
+    };
+    const nextWave = async () => {
+      await ctx.wait(900);
+      if(wave + 1 < LEVELS[level].waves.length){ cheer(); cap('More aliens are coming!'); await ctx.wait(1600); cap('Move the blaster under the aliens', false); startWave(wave + 1); return; }
+      cap('Here comes the big spaceship!'); flySound(); await ctx.wait(1200);
+      const w = Math.min(W*.36, 170); ufo = {el: el('div','iufo', UFO_SVG), x: w/2 + 6, y: 120, dir: 1, w}; ufo.el.style.width = w + 'px'; sc.appendChild(ufo.el); phase = 'ufo';
+    };
+    const win = async () => {
+      ctx._how && ctx._how.end(); ufo.el.classList.add('popped'); sparkleSound(7); cheer();
+      for(let i=0;i<24;i++){ const sp = el('i','spark'); sp.style.left = (ufo.x + rnd(-80,80))+'px'; sp.style.top = (ufo.y + rnd(-30,60))+'px'; sp.style.setProperty('--c', pick(ALIEN_COLS)); sp.style.animationDelay = rnd(0,.4)+'s'; sc.appendChild(sp); setTimeout(() => sp.remove(), 1800); }
+      cleared++; bar(cleared/total); setTimeout(() => ufo && ufo.el.remove(), 1500);
+      if(level === 0){
+        cap('Level 1 done!'); say('Brilliant! Now for level 2. These aliens are faster, and they drop slimy green bubbles. Move out of the way!');
+        await ctx.wait(4200); level = 1; ufo = null; showLevel(); cap('Dodge the green slime!', false); startWave(0); return;
+      }
+      bar(1); cap('You turned all the aliens into stars!'); say('Hooray! You beat level 2 and turned all the aliens into stars!');
+      await ctx.wait(4000); finish(ctx, 'Star blaster!');
+    };
+    raf = requestAnimationFrame(loop); ctx.onExit(() => cancelAnimationFrame(raf));
+    showLevel(); cap('Move the blaster under the aliens', false);
+    ctx.later(() => say('Silly aliens! Slide your finger to move the blaster. It shoots sparkly stars that turn the aliens into stars.'), 400);
+    await ctx.wait(900); startWave(0);
+    showHow(sc, ctx, 'drag', () => phase === 'play' || phase === 'ufo' ? [sx, shipY] : null,
+      () => { const a = aliens.find(a => a.alive); return phase === 'ufo' && ufo ? [ufo.x, shipY] : a ? [fx + a.ox + aw/2, shipY] : null; }, {idle:5000, wait:2500});
+  }
+});
+
+/* =================== POLICE CHASE =================== */
+const COPCAR_SVG = `<svg viewBox="0 0 60 100" aria-hidden="true"><g fill="#2a2840"><rect x="2" y="16" width="9" height="18" rx="3"/><rect x="49" y="16" width="9" height="18" rx="3"/><rect x="2" y="66" width="9" height="18" rx="3"/><rect x="49" y="66" width="9" height="18" rx="3"/></g>
+  <rect x="7" y="4" width="46" height="92" rx="16" fill="#f5f7fb" stroke="#2a2840" stroke-width="2.5"/><rect x="7" y="44" width="46" height="12" fill="#2f6fd1"/>
+  <path d="M13 22 Q30 14 47 22 L44 34 H16Z" fill="#3a4a6a"/><path d="M15 72 H45 L47 82 Q30 88 13 82Z" fill="#3a4a6a"/>
+  <g class="clights"><rect class="lr" x="13" y="48" width="16" height="6" rx="2" fill="#e8473b"/><rect class="lb" x="31" y="48" width="16" height="6" rx="2" fill="#2f8fff"/></g>
+  <circle cx="16" cy="8" r="3" fill="#ffe27a"/><circle cx="44" cy="8" r="3" fill="#ffe27a"/></svg>`;
+const LOOT = {cake:`<path d="M44 20 h20 v12 h-20z" fill="#f6d29a" stroke="#7a4f2c" stroke-width="1.5"/><path d="M44 20 q10 -6 20 0" fill="#f58ab8"/><circle cx="54" cy="14" r="3" fill="#e8473b"/>`,
+    teddy:`<circle cx="54" cy="20" r="9" fill="#c98f5a" stroke="#7a4f2c" stroke-width="1.5"/><circle cx="47" cy="12" r="4" fill="#c98f5a"/><circle cx="61" cy="12" r="4" fill="#c98f5a"/><circle cx="51" cy="19" r="1.4" fill="#2a2840"/><circle cx="57" cy="19" r="1.4" fill="#2a2840"/>`,
+    bananas:`<path d="M44 24 Q50 32 64 22 Q56 28 46 18Z" fill="#ffd23f" stroke="#c99a2e" stroke-width="1.5"/><path d="M46 18 Q54 26 64 14 Q58 22 48 12Z" fill="#ffe27a" stroke="#c99a2e" stroke-width="1.5"/>`,
+    crown:`<path d="M44 26 L46 12 L51 19 L54 10 L57 19 L62 12 L64 26Z" fill="#ffd23f" stroke="#c99a2e" stroke-width="1.5"/>`};
+function robberSVG(item){
+  const loot = LOOT[item];
+  return `<svg viewBox="0 0 70 92" aria-hidden="true"><g class="rlegs" stroke="#2a2840" stroke-width="6" stroke-linecap="round"><path class="rl1" d="M28 70 L24 86"/><path class="rl2" d="M38 70 L42 86"/></g>
+    <path d="M40 30 Q66 24 66 46 Q66 64 46 60Z" fill="#a8743a" stroke="#6b4a2a" stroke-width="2"/>${loot}
+    <rect x="18" y="38" width="30" height="34" rx="10" fill="#fff" stroke="#2a2840" stroke-width="2"/><g fill="#2a2840"><rect x="18" y="44" width="30" height="5"/><rect x="18" y="54" width="30" height="5"/><rect x="18" y="64" width="30" height="5"/></g>
+    <path d="M18 46 L8 56 M48 44 L56 36" stroke="#f1c9a5" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="33" cy="24" r="14" fill="#f1c9a5" stroke="#2a2840" stroke-width="2"/><path d="M19 20 Q20 6 33 6 Q46 6 47 20Z" fill="#2a2840"/><circle cx="33" cy="5" r="4" fill="#e8473b"/>
+    <rect x="20" y="19" width="26" height="9" rx="4.5" fill="#2a2840"/><circle cx="27" cy="23.5" r="2.6" fill="#fff"/><circle cx="39" cy="23.5" r="2.6" fill="#fff"/><circle cx="28" cy="24" r="1.3" fill="#2a2840"/><circle cx="40" cy="24" r="1.3" fill="#2a2840"/>
+    <path d="M27 31 q6 5 12 0" stroke="#2a2840" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`;
+}
+const LOOT_NAMES = {cake:'the cake', teddy:'the teddy bear', bananas:'the bananas', crown:'the crown'};
+function siren(){ const t = now(); [0, .3].forEach(d => { tone(880, t + d, .28, 'triangle', .05); }); [.15, .45].forEach(d => tone(660, t + d, .14, 'triangle', .04)); }
+GAMES.push({ id:'police', side:'hop', name:'Police Chase', tag:'Catch the cheeky robbers', icon:'police', tone:'ink',
+  async play(sc, ctx){
+    sc.className = 'scene bg-town';
+    const W = sc.clientWidth, H = sc.clientHeight, top = 150, m = Math.min(W, H);
+    const rx = [W*.3, W*.72], ry = [top + (H - top)*.3, top + (H - top)*.72], road = Math.max(46, m*.1);
+    let town = `<svg class="town" viewBox="0 0 ${W} ${H}">`;
+    rx.forEach(x => town += `<rect x="${x - road/2}" y="0" width="${road}" height="${H}" fill="#8e94a3"/><path d="M${x} 0 V${H}" stroke="#fff" stroke-width="3" stroke-dasharray="14 12"/>`);
+    ry.forEach(y => town += `<rect x="0" y="${y - road/2}" width="${W}" height="${road}" fill="#8e94a3"/><path d="M0 ${y} H${W}" stroke="#fff" stroke-width="3" stroke-dasharray="14 12"/>`);
+    const blocks = [[W*.08, top - 10], [W*.48, top - 10], [W*.86, top + 10], [W*.1, (ry[0] + ry[1])/2], [W*.5, (ry[0] + ry[1])/2 - 10], [W*.86, (ry[0] + ry[1])/2 + 8], [W*.12, H*.92], [W*.5, H*.92], [W*.86, H*.9]];
+    const hc = ['#f6a5c8','#9fd3f2','#ffd23f','#b9a0ee','#ff9f5a','#7cc96b'];
+    blocks.forEach(([x, y], i) => { const s = m*.11; if(i % 3 === 1){ town += `<circle cx="${x}" cy="${y}" r="${s*.42}" fill="#5fb35e" stroke="#3f8a3e" stroke-width="2"/><circle cx="${x + s*.5}" cy="${y + s*.2}" r="${s*.32}" fill="#6fbf5a" stroke="#3f8a3e" stroke-width="2"/>`; }
+      else town += `<rect x="${x - s/2}" y="${y - s/2}" width="${s}" height="${s*.8}" rx="4" fill="${hc[i % hc.length]}" stroke="#4a4458" stroke-width="2"/><path d="M${x - s*.6} ${y - s*.45} L${x} ${y - s*.95} L${x + s*.6} ${y - s*.45}Z" fill="#c45a4a" stroke="#4a4458" stroke-width="2"/><rect x="${x - s*.12}" y="${y - s*.05}" width="${s*.24}" height="${s*.35}" fill="#7a4f2c"/>`; });
+    town += '</svg>';
+    sc.innerHTML = town + `<div class="cpad"></div><div class="copcar"><div class="cin">${COPCAR_SVG}</div></div><div class="loot">${'<i></i>'.repeat(10)}</div><div class="ilevel cwave"></div>`;
+    const pad = sc.querySelector('.cpad'), car = sc.querySelector('.copcar'), slots = [...sc.querySelectorAll('.loot i')];
+    const cw = car.offsetWidth, ch = cw*100/60;
+    let x = W/2, y = (ry[0] + ry[1])/2, tx = x, ty = y, ang = 0, raf = 0, caught = 0, over = false, chasing = null, lastSiren = 0;
+    const rw = Math.min(m*.15, 86);
+    /* three waves of robbers: each wave runs faster and spots the police car from further away */
+    const WAVES = [{n:3, speed:1, sees:150}, {n:3, speed:1.35, sees:190}, {n:4, speed:1.7, sees:230}];
+    let wave = 0, robbers = [], total = WAVES.reduce((a, w) => a + w.n, 0);
+    const wl = sc.querySelector('.cwave');
+    const spawnWave = () => {
+      wl.textContent = 'Wave ' + (wave + 1); wl.classList.remove('pop'); void wl.offsetWidth; wl.classList.add('pop');
+      robbers = Array.from({length: WAVES[wave].n}, () => { const it = pick(Object.keys(LOOT)), e = el('button','robber', `<div class="rin">${robberSVG(it)}</div>`); e.setAttribute('aria-label','Robber'); e.style.width = rw + 'px'; sc.appendChild(e);
+        let px0, py0; do { px0 = rnd(.12, .88)*W; py0 = top + rnd(.1, .9)*(H - top - 40); } while(Math.hypot(px0 - x, py0 - y) < m*.4);
+        const r = {el:e, item:it, x: px0, y: py0, vx: rnd(-1, 1), vy: rnd(-1, 1), free:true};
+        e.animate([{opacity:0, transform:`translate(${px0 - rw/2}px,${py0 - rw*.65}px) scale(.3)`},{opacity:1, transform:`translate(${px0 - rw/2}px,${py0 - rw*.65}px)`}],{duration:500});
+        e.addEventListener('click', () => { if(r.free && !over) chasing = r; }); return r; });
+    };
+    let down = false;
+    const aim = e => { chasing = null; const o = sc.getBoundingClientRect(); tx = e.clientX - o.left; ty = Math.max(top - 20, e.clientY - o.top); };
+    pad.addEventListener('pointerdown', e => { down = true; try{ pad.setPointerCapture(e.pointerId); }catch(_){} aim(e); });
+    pad.addEventListener('pointermove', e => { if(down) aim(e); });
+    ['pointerup','pointercancel'].forEach(n => pad.addEventListener(n, () => { down = false; }));
+    const catchIt = async r => {
+      r.free = false; caught++; ctx._how && ctx._how.end();
+      r.el.classList.add('caughtr'); thump(); tone(1046, now() + .1, .2, 'square', .04);
+      const o = sc.getBoundingClientRect();
+      for(let i=0;i<8;i++){ const sp = el('i','spark'); sp.style.left = (r.x + rnd(-30,30))+'px'; sp.style.top = (r.y + rnd(-30,30))+'px'; sp.style.setProperty('--c', pick(['#ffd23f','#2f8fff','#e8473b'])); sc.appendChild(sp); setTimeout(() => sp.remove(), 1400); }
+      const slot = slots[caught - 1]; slot.innerHTML = `<svg viewBox="40 4 28 32">${LOOT[r.item]}</svg>`; slot.classList.add('got');
+      const line = pick(['Gotcha!', 'Caught you!', 'Stop right there!']) + ` You got ${LOOT_NAMES[r.item]} back!`; cap(line, false); say(line); cheer();
+      setTimeout(() => r.el.remove(), 900);
+      if(robbers.every(q => !q.free)){
+        if(wave + 1 < WAVES.length){ await ctx.wait(2400); if(!ctx.alive()) return; wave++; siren(); const l = wave === 1 ? 'Oh no, more robbers! These ones are faster!' : 'Here come the speediest robbers of all!'; cap(l, false); say(l); spawnWave(); return; }
+        over = true; await ctx.wait(2600); cap('You caught all the robbers. The town is safe!'); say('Well done! You caught all ten robbers. The town is safe!'); await ctx.wait(4200); finish(ctx, 'Super police!'); }
+    };
+    let prev = performance.now();
+    const loop = t => {
+      if(!ctx.alive()) return;
+      const dt = Math.min(50, t - prev), sp0 = m/1000; prev = t;
+      if(chasing && chasing.free){ tx = chasing.x; ty = chasing.y; }
+      const k = 1 - Math.pow(.994, dt), vx = (tx - x)*k, vy = (ty - y)*k; x += vx; y += vy;
+      const spd = Math.hypot(vx, vy); if(spd > .3) ang += ((((Math.atan2(vy, vx)*180/Math.PI + 90) - ang + 540) % 360) - 180)*Math.min(1, dt/90);
+      car.style.transform = `translate(${x - cw/2}px,${y - ch/2}px) rotate(${ang}deg)`; car.classList.toggle('moving', spd > .5);
+      if(spd > .8 && t - lastSiren > 900 && !over){ lastSiren = t; siren(); }
+      robbers.forEach(r => { if(!r.free) return;
+        const dx = r.x - x, dy = r.y - y, d = Math.hypot(dx, dy);
+        const Wv = WAVES[wave];
+        if(d < Wv.sees){ r.vx += dx/d*.08; r.vy += dy/d*.08; if(wave === 2 && Math.random() < .02){ r.vx += rnd(-.6, .6); r.vy += rnd(-.6, .6); } } else { r.vx += rnd(-.05, .05); r.vy += rnd(-.05, .05); }
+        const v = Math.hypot(r.vx, r.vy) || 1, max = d < Wv.sees ? .9 : .5; if(v > max){ r.vx *= max/v; r.vy *= max/v; }
+        r.x += r.vx*dt*sp0*.32*Wv.speed; r.y += r.vy*dt*sp0*.32*Wv.speed;
+        if(r.x < rw*.5){ r.x = rw*.5; r.vx = Math.abs(r.vx); } if(r.x > W - rw*.5){ r.x = W - rw*.5; r.vx = -Math.abs(r.vx); }
+        if(r.y < top){ r.y = top; r.vy = Math.abs(r.vy); } if(r.y > H - rw*.6){ r.y = H - rw*.6; r.vy = -Math.abs(r.vy); }
+        r.el.style.transform = `translate(${r.x - rw/2}px,${r.y - rw*.65}px)`; r.el.firstChild.style.transform = `scaleX(${r.vx < 0 ? -1 : 1})`;
+        if(d < cw*.9 + rw*.25) catchIt(r); });
+      raf = requestAnimationFrame(loop);
+    };
+    spawnWave();
+    raf = requestAnimationFrame(loop); ctx.onExit(() => cancelAnimationFrame(raf));
+    siren(); cap('Catch the cheeky robbers!', false);
+    ctx.later(() => say('Nee naw! Some cheeky robbers have taken things from the town. Move your finger to drive the police car and catch them!'), 300);
+    showHow(sc, ctx, 'drag', () => over ? null : [x, y], () => { const r = robbers.find(r => r.free); return r ? [r.x, r.y] : null; }, {idle:5000, wait:2500});
+  }
+});
+
+/* =================== FROGGY JUMP =================== */
+const FROG_SVG = `<svg viewBox="0 0 100 84" aria-hidden="true"><g class="fleg"><path d="M14 66 Q2 76 10 82 H34 Q30 72 26 64Z M86 66 Q98 76 90 82 H66 Q70 72 74 64Z" fill="#4fae4a" stroke="#2f7a2e" stroke-width="2.5" stroke-linejoin="round"/></g>
+  <ellipse cx="50" cy="56" rx="38" ry="26" fill="#5fc45a" stroke="#2f7a2e" stroke-width="2.5"/><ellipse cx="50" cy="64" rx="24" ry="14" fill="#c9f0a8"/>
+  <circle cx="30" cy="26" r="14" fill="#5fc45a" stroke="#2f7a2e" stroke-width="2.5"/><circle cx="70" cy="26" r="14" fill="#5fc45a" stroke="#2f7a2e" stroke-width="2.5"/>
+  <circle cx="30" cy="25" r="8.5" fill="#fff"/><circle cx="70" cy="25" r="8.5" fill="#fff"/><circle cx="31" cy="26" r="4.6" fill="#2a2840"/><circle cx="71" cy="26" r="4.6" fill="#2a2840"/><circle cx="32.5" cy="24" r="1.6" fill="#fff"/><circle cx="72.5" cy="24" r="1.6" fill="#fff"/>
+  <path class="fsmile" d="M30 48 Q50 62 70 48" stroke="#2f7a2e" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="22" cy="50" r="5" fill="#ff8fb0" opacity=".45"/><circle cx="78" cy="50" r="5" fill="#ff8fb0" opacity=".45"/>
+  <g fill="#4fae4a" stroke="#2f7a2e" stroke-width="2"><ellipse cx="32" cy="78" rx="9" ry="5"/><ellipse cx="68" cy="78" rx="9" ry="5"/></g></svg>`;
+const FLY_SVG = `<svg viewBox="0 0 40 30" aria-hidden="true"><g class="flyw" fill="#e9f6ff" stroke="#9fc3dc" stroke-width="1.2" opacity=".9"><ellipse cx="14" cy="8" rx="9" ry="6" transform="rotate(-20 14 8)"/><ellipse cx="26" cy="8" rx="9" ry="6" transform="rotate(20 26 8)"/></g>
+  <ellipse cx="20" cy="18" rx="10" ry="8" fill="#3a3a48"/><circle cx="29" cy="15" r="5.5" fill="#3a3a48"/><circle cx="31" cy="14" r="2.6" fill="#e8473b"/><path d="M12 25 l-3 4 M18 26 l-1 4 M24 26 l1 4" stroke="#3a3a48" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+function croak(){ const t = now(); tone(140, t, .18, 'sawtooth', .07); tone(110, t + .2, .22, 'sawtooth', .07); noise(t, .35, .04, 500, 'bandpass'); }
+function buzz(){ const t = now(); tone(220, t, .25, 'sawtooth', .015); tone(233, t, .25, 'sawtooth', .015); }
+const BEE_SVG = `<svg viewBox="0 0 40 30" aria-hidden="true"><g class="flyw" fill="#e9f6ff" stroke="#9fc3dc" stroke-width="1.2" opacity=".9"><ellipse cx="14" cy="8" rx="9" ry="6" transform="rotate(-20 14 8)"/><ellipse cx="26" cy="8" rx="9" ry="6" transform="rotate(20 26 8)"/></g>
+  <ellipse cx="20" cy="18" rx="12" ry="9" fill="#ffd23f" stroke="#2a2840" stroke-width="1.5"/><path d="M16 10 v16 M23 10 v16" stroke="#2a2840" stroke-width="4"/><circle cx="31" cy="16" r="5" fill="#2a2840"/><circle cx="32.5" cy="15" r="1.4" fill="#fff"/><path d="M7 18 l-5 1" stroke="#2a2840" stroke-width="2" stroke-linecap="round"/></svg>`;
+GAMES.push({ id:'frog', side:'hop', name:'Froggy Jump', tag:'Jump at just the right time', icon:'frog', tone:'ink',
+  async play(sc, ctx){
+    sc.className = 'scene bg-pond';
+    const W = sc.clientWidth, H = sc.clientHeight, m = Math.min(W, H), water = H*.74;
+    sc.innerHTML = `<div class="pondsky"></div><svg class="reeds" viewBox="0 0 400 120" preserveAspectRatio="none">${Array.from({length:22}, (_, i) => { const x = i*19 + rnd(-4,4), h = rnd(50,110); return `<path d="M${x} 120 Q${x + rnd(-8,8)} ${120 - h/2} ${x + rnd(-10,10)} ${120 - h}" stroke="#4f9a54" stroke-width="5" fill="none"/>${i % 4 === 1 ? `<rect x="${x - 5}" y="${120 - h + 4}" width="10" height="24" rx="5" fill="#8a5a3b"/>` : ''}`; }).join('')}</svg>
+      <div class="pondwater" style="top:${water}px"></div><div class="lily" style="left:${W/2}px;top:${H - 54}px"></div><div class="lily small" style="left:${W*.15}px;top:${water + 34}px"></div><div class="lily small" style="left:${W*.86}px;top:${water + 48}px"></div>
+      <div class="fcol"></div><div class="fpad2"></div><svg class="tongue" viewBox="0 0 ${W} ${H}"><line/></svg><div class="frog">${FROG_SVG}</div>`;
+    const frog = sc.querySelector('.frog'), pad = sc.querySelector('.fpad2'), tongue = sc.querySelector('.tongue line'), col = sc.querySelector('.fcol'), bar = meter(sc);
+    const fw = Math.min(W*.28, 150), fh = fw*.84, homeX = W/2, homeY = H - 54 - fh*.62; frog.style.width = fw + 'px';
+    const GOAL = 10, R = Math.max(36, m*.07), reachTop = H*.2, bandLo = H*.24, bandHi = H*.56;
+    Object.assign(col.style, {left: (homeX - R) + 'px', width: R*2 + 'px', top: reachTop + 'px', height: (homeY - reachTop) + 'px'});
+    let fy = homeY, state = 'idle', got = 0, bugs = [], raf = 0, over = false, lastBuzz = 0, made = 0;
+    const placeFrog = (rot = 0) => { frog.style.transform = `translate(${homeX - fw/2}px,${fy - fh/2}px) rotate(${rot}deg)`; };
+    /* flies zoom across from side to side; from the third catch a bee sometimes joins in — don't eat the bee! */
+    const spawn = () => {
+      made++; const bee = got >= 2 && made % 3 === 0, e = el('i', bee ? 'fly bee' : 'fly', bee ? BEE_SVG : FLY_SVG), s = m*.1; e.style.width = s + 'px'; sc.appendChild(e);
+      const dir = Math.random() < .5 ? 1 : -1, speed = W/rnd(3.6, 5.2)/1000*(1 + got*.07);
+      bugs.push({el:e, s, bee, x: dir > 0 ? -s : W + s, y: rnd(bandLo, bandHi), vx: dir*speed, ph: rnd(0, 6), alive:true});
+    };
+    const jump = async () => {
+      if(state !== 'idle' || over) return; state = 'jump'; ctx._how && ctx._how.end();
+      frog.classList.add('leap'); tone(300, now(), .12, 'sine', .06); tone(600, now() + .05, .1, 'sine', .04);
+      const t0 = performance.now(), up = H*.14;
+      await new Promise(res => { const st = t => { if(!ctx.alive()) return; const p = Math.min(1, (t - t0)/220); fy = homeY - up*(1 - Math.pow(1 - p, 2)); placeFrog(); if(p < 1) requestAnimationFrame(st); else res(); }; requestAnimationFrame(st); });
+      if(!ctx.alive()) return;
+      /* the tongue shoots straight up: anything crossing the frog's path gets caught */
+      const mouthY = fy - fh*.1; let hit = null, bd = 1e9;
+      bugs.forEach(b => { if(!b.alive) return; if(Math.abs(b.x - homeX) < R + b.s*.3 && b.y > reachTop - 10 && b.y < mouthY){ const d = Math.abs(b.x - homeX); if(d < bd){ bd = d; hit = b; } } });
+      tongue.setAttribute('x1', homeX); tongue.setAttribute('y1', mouthY); tongue.setAttribute('x2', homeX); tongue.setAttribute('y2', hit ? hit.y : reachTop); tongue.parentNode.classList.add('on');
+      if(hit){ hit.alive = false; hit.el.classList.add('eaten'); setTimeout(() => hit.el.remove(), 400);
+        if(hit.bee){ tone(200, now(), .3, 'sawtooth', .05); cap('Ouch! That was a bee! Only catch the flies.', false); say('Ouch! That was a bee!'); frog.classList.add('dizzy'); }
+        else { got++; bar(got/GOAL); popSound(700 + got*40); chime(PENTA[(got - 1) % 6]*2); bignum(sc, got); say(WORDS[got]); cap(pick(['Yum!', 'Gulp!', 'Got it!', 'Snap!']), false); } }
+      else { tone(260, now(), .15, 'triangle', .04); cap('Missed! Wait until a fly is right above the frog.', false); }
+      await ctx.wait(220); tongue.parentNode.classList.remove('on');
+      if(hit && !hit.bee){ frog.classList.add('gulp'); croak(); }
+      const t1 = performance.now(), sy = fy;
+      await new Promise(res => { const st = t => { if(!ctx.alive()) return; const p = Math.min(1, (t - t1)/300); fy = sy + (homeY - sy)*p*p; placeFrog(); if(p < 1) requestAnimationFrame(st); else res(); }; requestAnimationFrame(st); });
+      if(!ctx.alive()) return;
+      frog.classList.remove('leap', 'gulp'); fy = homeY; placeFrog(); noise(now(), .15, .06, 900);
+      if(frog.classList.contains('dizzy')){ await ctx.wait(900); frog.classList.remove('dizzy'); }
+      if(got >= GOAL){ over = true; bugs.forEach(b => b.el.remove()); cheer(); croak(); cap('Yum! The frog caught ten flies!'); say('Yum yum! The frog caught ten flies. Well done!'); frog.classList.add('happy'); await ctx.wait(4200); finish(ctx, 'Full froggy!'); return; }
+      state = 'idle';
+    };
+    pad.addEventListener('pointerdown', jump);
+    let prev = performance.now();
+    const loop = t => {
+      if(!ctx.alive()) return;
+      const dt = Math.min(50, t - prev); prev = t;
+      bugs.forEach(b => { if(!b.alive) return; b.x += b.vx*dt; const yy = b.y + Math.sin(t/260 + b.ph)*8;
+        b.el.style.transform = `translate(${b.x - b.s/2}px,${yy - b.s*.38}px) scaleX(${b.vx < 0 ? -1 : 1})`;
+        if(b.x < -b.s*1.5 || b.x > W + b.s*1.5){ b.alive = false; b.el.remove(); } });
+      bugs = bugs.filter(b => b.alive || b.el.isConnected);
+      if(!over && bugs.filter(b => b.alive).length < 2 && Math.random() < .03) spawn();
+      if(t - lastBuzz > 2600 && !over){ lastBuzz = t; buzz(); }
+      raf = requestAnimationFrame(loop);
+    };
+    placeFrog(); spawn();
+    raf = requestAnimationFrame(loop); ctx.onExit(() => cancelAnimationFrame(raf));
+    croak(); cap('Tap when a fly is above the frog!', false);
+    ctx.later(() => say('The frog is hungry! Wait until a fly is right above the frog, then tap to make it jump.'), 400);
+    showHow(sc, ctx, 'tap', () => { if(over || state !== 'idle') return null; const b = bugs.find(b => b.alive && !b.bee && Math.abs(b.x - homeX) < W*.12); return b ? [homeX, homeY - fh*.2] : null; }, null, {idle:5000, wait:3000, track:true});
   }
 });
 
